@@ -56,7 +56,6 @@ void main() {
 					case -1: case 1: case 0:
 						if (g.askContinue() != 'Y') g.exitGame();
 						else g.startGame();
-
 					}
 
 				}
