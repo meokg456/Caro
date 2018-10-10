@@ -1,8 +1,8 @@
 ﻿#include "_Game.h"
 
-#define BOARD_SIZE 10
-#define LEFT 5
-#define TOP 5
+#define BOARD_SIZE 20
+#define LEFT 0
+#define TOP 0
 void main() {
 
 	_Common::fixConsoleWindow();
@@ -54,10 +54,7 @@ void main() {
 					switch (g.processFinish()) {
 
 					case -1: case 1: case 0:
-
-
 						if (g.askContinue() != 'Y') g.exitGame();
-
 						else g.startGame();
 
 					}
