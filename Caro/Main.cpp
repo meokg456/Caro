@@ -1,8 +1,8 @@
 ﻿#include "_Game.h"
 
-#define BOARD_SIZE 400
-#define LEFT 20
-#define TOP 20
+#define BOARD_SIZE 10
+#define LEFT 5
+#define TOP 5
 void main() {
 
 	_Common::fixConsoleWindow();

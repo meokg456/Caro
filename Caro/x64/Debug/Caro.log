@@ -1,36 +1,3 @@
 ﻿  Main.cpp
 c:\users\admin\documents\github\caro\caro\main.cpp(6): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  _Board.cpp
-  _Game.cpp
-  Generating Code...
-_Board.obj : error LNK2005: "public: __cdecl _Point::_Point(int,int)" (??0_Point@@QEAA@HH@Z) already defined in Main.obj
-_Board.obj : error LNK2005: "public: __cdecl _Point::_Point(void)" (??0_Point@@QEAA@XZ) already defined in Main.obj
-_Board.obj : error LNK2005: "public: static void __cdecl _Common::fixConsoleWindow(void)" (?fixConsoleWindow@_Common@@SAXXZ) already defined in Main.obj
-_Board.obj : error LNK2005: "public: int __cdecl _Point::getCheck(void)" (?getCheck@_Point@@QEAAHXZ) already defined in Main.obj
-_Board.obj : error LNK2005: "public: int __cdecl _Board::getLeft(void)" (?getLeft@_Board@@QEAAHXZ) already defined in Main.obj
-_Board.obj : error LNK2005: "public: int __cdecl _Board::getSize(void)" (?getSize@_Board@@QEAAHXZ) already defined in Main.obj
-_Board.obj : error LNK2005: "public: int __cdecl _Board::getTop(void)" (?getTop@_Board@@QEAAHXZ) already defined in Main.obj
-_Board.obj : error LNK2005: "public: int __cdecl _Point::getX(void)" (?getX@_Point@@QEAAHXZ) already defined in Main.obj
-_Board.obj : error LNK2005: "public: int __cdecl _Board::getXAt(int,int)" (?getXAt@_Board@@QEAAHHH@Z) already defined in Main.obj
-_Board.obj : error LNK2005: "public: int __cdecl _Point::getY(void)" (?getY@_Point@@QEAAHXZ) already defined in Main.obj
-_Board.obj : error LNK2005: "public: int __cdecl _Board::getYAt(int,int)" (?getYAt@_Board@@QEAAHHH@Z) already defined in Main.obj
-_Board.obj : error LNK2005: "public: static void __cdecl _Common::gotoXY(int,int)" (?gotoXY@_Common@@SAXHH@Z) already defined in Main.obj
-_Board.obj : error LNK2005: "public: bool __cdecl _Point::setCheck(int)" (?setCheck@_Point@@QEAA_NH@Z) already defined in Main.obj
-_Board.obj : error LNK2005: "public: void __cdecl _Point::setX(int)" (?setX@_Point@@QEAAXH@Z) already defined in Main.obj
-_Board.obj : error LNK2005: "public: void __cdecl _Point::setY(int)" (?setY@_Point@@QEAAXH@Z) already defined in Main.obj
-_Game.obj : error LNK2005: "public: __cdecl _Point::_Point(int,int)" (??0_Point@@QEAA@HH@Z) already defined in Main.obj
-_Game.obj : error LNK2005: "public: __cdecl _Point::_Point(void)" (??0_Point@@QEAA@XZ) already defined in Main.obj
-_Game.obj : error LNK2005: "public: static void __cdecl _Common::fixConsoleWindow(void)" (?fixConsoleWindow@_Common@@SAXXZ) already defined in Main.obj
-_Game.obj : error LNK2005: "public: int __cdecl _Point::getCheck(void)" (?getCheck@_Point@@QEAAHXZ) already defined in Main.obj
-_Game.obj : error LNK2005: "public: int __cdecl _Board::getLeft(void)" (?getLeft@_Board@@QEAAHXZ) already defined in Main.obj
-_Game.obj : error LNK2005: "public: int __cdecl _Board::getSize(void)" (?getSize@_Board@@QEAAHXZ) already defined in Main.obj
-_Game.obj : error LNK2005: "public: int __cdecl _Board::getTop(void)" (?getTop@_Board@@QEAAHXZ) already defined in Main.obj
-_Game.obj : error LNK2005: "public: int __cdecl _Point::getX(void)" (?getX@_Point@@QEAAHXZ) already defined in Main.obj
-_Game.obj : error LNK2005: "public: int __cdecl _Board::getXAt(int,int)" (?getXAt@_Board@@QEAAHHH@Z) already defined in Main.obj
-_Game.obj : error LNK2005: "public: int __cdecl _Point::getY(void)" (?getY@_Point@@QEAAHXZ) already defined in Main.obj
-_Game.obj : error LNK2005: "public: int __cdecl _Board::getYAt(int,int)" (?getYAt@_Board@@QEAAHHH@Z) already defined in Main.obj
-_Game.obj : error LNK2005: "public: static void __cdecl _Common::gotoXY(int,int)" (?gotoXY@_Common@@SAXHH@Z) already defined in Main.obj
-_Game.obj : error LNK2005: "public: bool __cdecl _Point::setCheck(int)" (?setCheck@_Point@@QEAA_NH@Z) already defined in Main.obj
-_Game.obj : error LNK2005: "public: void __cdecl _Point::setX(int)" (?setX@_Point@@QEAAXH@Z) already defined in Main.obj
-_Game.obj : error LNK2005: "public: void __cdecl _Point::setY(int)" (?setY@_Point@@QEAAXH@Z) already defined in Main.obj
-C:\Users\Admin\Documents\GitHub\Caro\x64\Debug\Caro.exe : fatal error LNK1169: one or more multiply defined symbols found
+  Caro.vcxproj -> C:\Users\Admin\Documents\GitHub\Caro\x64\Debug\Caro.exe
