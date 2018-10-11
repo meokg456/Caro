@@ -50,13 +50,13 @@ int _Game::getCommand() { return _command; }
 bool _Game::isContinue() { return _loop; }
 char _Game::waitKeyBoard() {
 	_command = toupper(_getch());
+	if (_command == 0) _command = toupper(_getch());
 	return _command;
-
 }
 char _Game::askContinue() {
-	_Common::gotoXY(0, _b->getYAt(_b->getSize() - 1, _b->getSize() - 1) + 4);
+	_Common::gotoXY(0, _b->getYAt(_b->getSize() - 1, _b->getSize() - 1) + 3);
+	cout << "Ban co muon choi lai khong? (y/n)" << endl;
 	return waitKeyBoard();
-
 }
 void _Game::startGame() {
 
@@ -94,26 +94,26 @@ int _Game::processFinish()
 {
 	// Nhảy tới vị trí thích hợp để in chuỗi thắng/thua/hòa
 
-	_Common::gotoXY(0, _b->getYAt(_b->getSize() - 1, _b->getSize() - 1) + 2);
+	
 
 	int pWhoWin = _b->testBoard();
 
 	switch (pWhoWin) {
 
 	case -1:
-
+		_Common::gotoXY(0, _b->getYAt(_b->getSize() - 1, _b->getSize() - 1) + 2);
 		printf("Nguoi choi %d da thang va nguoi choi %d da thua\n", true, false);
 
 		break;
 
 	case 1:
-
+		_Common::gotoXY(0, _b->getYAt(_b->getSize() - 1, _b->getSize() - 1) + 2);
 		printf("Nguoi choi %d da thang va nguoi choi %d da thua\n", false, true);
 
 		break;
 
 	case 0:
-
+		_Common::gotoXY(0, _b->getYAt(_b->getSize() - 1, _b->getSize() - 1) + 2);
 		printf("Nguoi choi %d da hoa nguoi choi %d\n", false, true);
 
 		break;
@@ -124,7 +124,6 @@ int _Game::processFinish()
 
 	}
 
-	_Common::gotoXY(_x, _y);// Trả về vị trí hiện hành của con trỏ màn hình bàn cờ
 
 	return pWhoWin;
 

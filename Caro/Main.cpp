@@ -7,7 +7,7 @@ void main() {
 
 	_Common::fixConsoleWindow();
 
-	_Game g(BOARD_SIZE, LEFT, TOP); // Sinh viên tự định nghĩa các hằng số
+	_Game g(BOARD_SIZE, LEFT, TOP);
 
 	g.startGame();
 
@@ -53,9 +53,9 @@ void main() {
 
 					switch (g.processFinish()) {
 
-					case -1: case 1: case 0:
-						if (g.askContinue() != 'Y') g.exitGame();
-						else g.startGame();
+					case -1: case 1: case 0:;
+					if (g.askContinue() == 'Y')  g.startGame();
+					else g.exitGame();
 					}
 
 				}

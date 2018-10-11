@@ -108,7 +108,7 @@ public:
 	 return 0;
 
  }
- int _Board::testBoard() { return 0; } // Trả mặc định là hòa
+ int _Board::testBoard() { return 2; } // Trả mặc định là hòa
 
 
 
