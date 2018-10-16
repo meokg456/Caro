@@ -1,5 +1,4 @@
 ﻿#include "_Game.h"
-
 #define BOARD_SIZE 20
 #define LEFT 0
 #define TOP 0
@@ -65,4 +64,5 @@ void main() {
 		}
 
 	}
+
 }

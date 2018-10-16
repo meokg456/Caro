@@ -54,7 +54,8 @@ char _Game::waitKeyBoard() {
 	return _command;
 }
 char _Game::askContinue() {
-	_Common::gotoXY(0, _b->getYAt(_b->getSize() - 1, _b->getSize() - 1) + 3);
+	_Common::gotoXY(0, _b->getYAt(_b->getSize() - 1, _b->getSize() - 1) + 3);// Đưa con trỏ ra khỏi bàn cờ để không cho người chơi 
+																			// tiếp tục đánh 
 	cout << "Ban co muon choi lai khong? (y/n)" << endl;
 	return waitKeyBoard();
 }
