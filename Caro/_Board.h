@@ -33,6 +33,7 @@ public:
 
 	int KiemTraDoc();
 	bool isFullBoard();
+	int KiemTraNgang();
 };
  int _Board::getSize() { return _size; }
  int _Board::getLeft() { return _left; }
@@ -116,14 +117,16 @@ public:
  }
  int _Board::testBoard()
  {
+	 int temp = 2;
 	 if (isFullBoard())
 		 return 0;
 	 else
 	 {
 		 if(KiemTraDoc()!=0)
-			 return KiemTraDoc();
-		 else
-			return 2;
+			 temp= KiemTraDoc();
+		 if (KiemTraNgang() != 0)
+			 temp = KiemTraNgang();
+		 return temp;
 	 }
  } // Trả mặc định là hòa// Viết lại hàm 
 
@@ -161,20 +164,49 @@ public:
 	 return 0;
  }
 
- /*bool KiemTraNgang()
+ int _Board::KiemTraNgang()
  {
+	 for (int i = 0; i < _size; i++)
+	 {
+		 for (int j = 0; j < _size; j++)
+		 {
+			 if (_pArr[i][j].getCheck() != 0)
+			 {
+				 int temp = _pArr[i][j].getCheck();
+				 int Dem = 1;
+				 while (Dem != 5 && j < _size)
+				 {
+					 if ((_pArr[i][j].getCheck()) == (_pArr[i][j+1].getCheck()))
+					 {
+						 Dem++;
+						 j++;
+					 }
+					 else
+						 break;
+				 }
+				 if (Dem == 5)
+				 {
+					 if (temp == 1)
+						 return 1;
+					 else
+						 return -1;
+				 }
+			 }
 
+		 }
+	 }
+	 return 0;
  }
 
- bool KiemTraCheoTrai()
- {
+ //bool KiemTraCheoTrai()
+ //{
 
- }
+ //}
 
- bool KiemTraCheoPhai()
- {
+ //bool KiemTraCheoPhai()
+ //{
 
- }*/
+ //}
 
  bool _Board::isFullBoard()
  {
