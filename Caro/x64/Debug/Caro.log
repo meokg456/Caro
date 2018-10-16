@@ -1,3 +1,0 @@
-﻿  Main.cpp
-c:\users\admin\documents\github\caro\caro\main.cpp(6): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  Caro.vcxproj -> C:\Users\Admin\Documents\GitHub\Caro\x64\Debug\Caro.exe
