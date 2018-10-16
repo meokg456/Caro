@@ -33,7 +33,6 @@ public:
 	void moveDown();
 	void exitGame();
 	_Game(int, int, int);
-	bool gameSave();
 	~_Game();
 
 };
@@ -178,11 +177,6 @@ void _Game::moveUp() {
 
 	}
 }
-bool _Game::gameSave()
-{
-	char* filename;
-	cout << "Hay nhap ten tap tin muon save: ";
-	cin >> filename;
-}
+
 
 #endif
