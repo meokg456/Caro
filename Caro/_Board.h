@@ -7,11 +7,12 @@ class _Board {
 
 private:
 
-	int _size;
+	int _size;// kích thước dài và rộng của bàn cờ
 
-	int _left, _top;
+	int _left, _top;// _left là khoảng cách từ mép TRÁI MÀN HÌNH CONSOLE tới mép TRÁI BÀN CỜ
+					// _top là khoảng cách từ mép TRÊN MÀN HÌNH CONSOLE tới mép TRÊN BÀN CỜ
 
-	_Point** _pArr;
+	_Point** _pArr;// Quản lí tất cả vị trí đánh quân cờ(các vị trí trên bàn cờ)
 
 public:
 
@@ -30,15 +31,20 @@ public:
 	_Board(int, int, int);
 	~_Board();
 
+	int KiemTraDoc();
+	bool isFullBoard();
+	int KiemTraNgang();
 };
  int _Board::getSize() { return _size; }
  int _Board::getLeft() { return _left; }
  int _Board::getTop() { return _top; }
- int _Board::getXAt(int i, int j) {
+ int _Board::getXAt(int i, int j)// Lấy ra hoành độ của quân cờ tại ô nhớ có vị trí i, j
+ {
 	 return _pArr[i][j].getX();
 
  }
- int _Board::getYAt(int i, int j) {
+ int _Board::getYAt(int i, int j)// Lấy ra tung độ của quân cờ tại ô nhớ có vị trí i, j
+ {
 	 return _pArr[i][j].getY();
 
  }
@@ -66,8 +72,8 @@ public:
 	 for (int i = 0; i < _size; i++) {
 
 		 for (int j = 0; j < _size; j++) {
-			 _pArr[i][j].setX(4 * j + _left + 2); // Trùng với hoành độ màn hình bàn cờ
-			 _pArr[i][j].setY(2 * i + _top + 1); // Trùng với tung độ màn hình bàn cờ
+			 _pArr[i][j].setX(4 * j + _left + 2); // Trùng với hoành độ màn hình bàn cờ; hoành độ vị trí đánh quân cờ 
+			 _pArr[i][j].setY(2 * i + _top + 1); // Trùng với tung độ màn hình bàn cờ; tung độ vị trí đánh quần cờ 
 			 _pArr[i][j].setCheck(0);
 
 		 }
@@ -77,9 +83,9 @@ public:
  }
  void _Board::drawBoard() {
 	 if (_pArr == NULL) return; // phải gọi constructor trước
-	 for (int i = 0; i <= _size; i++) {
+	 for (int i = 0; i <= _size; i++) {					// vẽ theo i là vẽ từ trái sang
 		 for (int j = 0; j <= _size; j++) {
-			 _Common::gotoXY(_left + 4 * i, _top + 2 * j);
+			 _Common::gotoXY(_left + 4 * i, _top + 2 * j);// vẽ theo j là vẽ dọc từ trên xuống(vẽ trước)
 			 printf(".");
 
 		 }
@@ -88,7 +94,8 @@ public:
 	 _Common::gotoXY(_pArr[0][0].getX(), _pArr[0][0].getY());// di chuyển vào ô đầu
 
  }
- int _Board::checkBoard(int pX, int pY, bool pTurn) {
+ int _Board::checkBoard(int pX, int pY, bool pTurn)// pX: hoành độ quân cờ; pY: tung độ quân cờ; pTurn: Trang thái lượt đánh của 2 người
+ {
 
 	 for (int i = 0; i < _size; i++) {
 
@@ -108,9 +115,108 @@ public:
 	 return 0;
 
  }
- int _Board::testBoard() { return 2; } // Trả mặc định là hòa
+ int _Board::testBoard()
+ {
+	 int temp = 2;
+	 if (isFullBoard())
+		 return 0;
+	 else
+	 {
+		 if(KiemTraDoc()!=0)
+			 temp= KiemTraDoc();
+		 if (KiemTraNgang() != 0)
+			 temp = KiemTraNgang();
+		 return temp;
+	 }
+ } // Trả mặc định là hòa// Viết lại hàm 
 
+ int _Board::KiemTraDoc()
+ {
+	 for (int j = 0; j < _size; j++)
+	 {
+		 for (int i = 0; i < _size; i++)
+		 {
+			 if (_pArr[i][j].getCheck() != 0)
+			 {
+				 int temp = _pArr[i][j].getCheck();
+				 int Dem = 1;
+				 while (Dem != 5 && i < _size)
+				 {
+					 if ((_pArr[i][j].getCheck()) == (_pArr[i + 1][j].getCheck()))
+					 {
+						 Dem++;
+						 i++;
+					 }
+					 else
+						 break;
+				 }
+				 if (Dem == 5)
+				 {
+					 if (temp == 1)
+						 return 1;
+					 else
+						 return -1;
+				 }
+			 }
 
+		 }
+	 }
+	 return 0;
+ }
 
+ int _Board::KiemTraNgang()
+ {
+	 for (int i = 0; i < _size; i++)
+	 {
+		 for (int j = 0; j < _size; j++)
+		 {
+			 if (_pArr[i][j].getCheck() != 0)
+			 {
+				 int temp = _pArr[i][j].getCheck();
+				 int Dem = 1;
+				 while (Dem != 5 && j < _size)
+				 {
+					 if ((_pArr[i][j].getCheck()) == (_pArr[i][j+1].getCheck()))
+					 {
+						 Dem++;
+						 j++;
+					 }
+					 else
+						 break;
+				 }
+				 if (Dem == 5)
+				 {
+					 if (temp == 1)
+						 return 1;
+					 else
+						 return -1;
+				 }
+			 }
+
+		 }
+	 }
+	 return 0;
+ }
+
+ //bool KiemTraCheoTrai()
+ //{
+
+ //}
+
+ //bool KiemTraCheoPhai()
+ //{
+
+ //}
+
+ bool _Board::isFullBoard()
+ {
+	 for (int i = 0; i < _size; i++)
+		 for (int j = 0; j < _size; j++)
+		 {
+			 if (_pArr[i][j].getCheck() == 0)
+				 return false;
+		 }
+	 return true;
+ }
 
 #endif
