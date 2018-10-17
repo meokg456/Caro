@@ -34,6 +34,8 @@ public:
 	int KiemTraDoc();
 	bool isFullBoard();
 	int KiemTraNgang();
+	int KiemTraCheoTrai();
+	int KiemTraCheoPhai();
 };
  int _Board::getSize() { return _size; }
  int _Board::getLeft() { return _left; }
@@ -122,10 +124,14 @@ public:
 		 return 0;
 	 else
 	 {
-		 if(KiemTraDoc()!=0)
+		 if (KiemTraDoc()!=0)
 			 temp= KiemTraDoc();
 		 if (KiemTraNgang() != 0)
 			 temp = KiemTraNgang();
+		 if (KiemTraCheoTrai() != 0)
+			 temp = KiemTraCheoTrai();
+		 if (KiemTraCheoPhai() != 0)
+			 temp = KiemTraCheoPhai();
 		 return temp;
 	 }
  } // Trả mặc định là hòa// Viết lại hàm 
@@ -140,7 +146,7 @@ public:
 			 {
 				 int temp = _pArr[i][j].getCheck();
 				 int Dem = 1;
-				 while (Dem != 5 && i < _size)
+				 while (Dem != 5 && i < _size-1)
 				 {
 					 if ((_pArr[i][j].getCheck()) == (_pArr[i + 1][j].getCheck()))
 					 {
@@ -174,7 +180,7 @@ public:
 			 {
 				 int temp = _pArr[i][j].getCheck();
 				 int Dem = 1;
-				 while (Dem != 5 && j < _size)
+				 while (Dem != 5 && j < _size-1)
 				 {
 					 if ((_pArr[i][j].getCheck()) == (_pArr[i][j+1].getCheck()))
 					 {
@@ -198,15 +204,81 @@ public:
 	 return 0;
  }
 
- //bool KiemTraCheoTrai()
- //{
+ int _Board::KiemTraCheoTrai()
+ {
+	 for (int i = 0; i < _size; i++)
+	 {
+		 for (int j = 0; j < _size; j++)
+		 {
+			 if (_pArr[i][j].getCheck() != 0)
+			 {
+				 int temp = _pArr[i][j].getCheck();
+				 int Dem = 0;
+				 int k = i;
+				 int l = j;
+				 while ((Dem != 5) && (k <_size) && (l < _size))
+				 {
+					 if ((_pArr[i][j].getCheck()) == (_pArr[k][l].getCheck()))
+					 {
+						 Dem++;
+						 k++;
+						 l++;
+					 }
+					 else
+						 break;
+				 }
+				 if (Dem == 5)
+				 {
+					 if (temp == 1)
+						 return 1;
+					 else
+						 return -1;
+				 }
+				 
+			 }
 
- //}
+		 }
+	 }
+	 return 0;
+ }
 
- //bool KiemTraCheoPhai()
- //{
+ int _Board:: KiemTraCheoPhai()
+ {
+	 for (int i = 0; i<_size; i++)
+	 {
+		 for (int j = _size-1; j >=0; j--)
+		 {
+			 if (_pArr[i][j].getCheck() != 0)
+			 {
+				 int temp = _pArr[i][j].getCheck();
+				 int Dem = 0;
+				 int k = i;
+				 int l = j;
+				 while ((Dem != 5) && (k < _size) && (l >=0))
+				 {
+					 if ((_pArr[i][j].getCheck()) == (_pArr[k][l].getCheck()))
+					 {
+						 Dem++;
+						 k++;
+						 l--;
+					 }
+					 else
+						 break;
+				 }
+				 if (Dem == 5)
+				 {
+					 if (temp == 1)
+						 return 1;
+					 else
+						 return -1;
+				 }
 
- //}
+			 }
+
+		 }
+	 }
+	 return 0;
+ }
 
  bool _Board::isFullBoard()
  {
