@@ -33,7 +33,6 @@ public:
 	void moveDown();
 	void exitGame();
 	_Game(int, int, int);
-
 	~_Game();
 
 };
