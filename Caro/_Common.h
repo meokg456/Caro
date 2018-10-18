@@ -1,4 +1,4 @@
-#ifndef _COMMON_H
+﻿#ifndef _COMMON_H
 #define _COMMON_H
 #include <iostream>
 #include <Windows.h>
@@ -7,7 +7,7 @@ using namespace std;
 class _Common {
 public:
 	static void fixConsoleWindow();
-	static void gotoXY(int, int);
+	static void gotoXY(int, int);// Đưa con trỏ tới vị trí có tọa độ pX, pY
 };
 void _Common::gotoXY(int pX, int pY) {
 	COORD coord;
