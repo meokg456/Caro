@@ -1,6 +1,7 @@
 ﻿#ifndef _Game_H
 #define _Game_H
 #include"_Board.h"
+
 class _Game {
 
 	_Board* _b;// một bàn cờ
@@ -30,7 +31,6 @@ public:
 
 	void moveLeft();
 	void moveUp();
-	void SaveGame();
 	void moveDown();
 	void exitGame();
 	_Game(int, int, int);
@@ -179,8 +179,4 @@ void _Game::moveUp() {
 	}
 }
 
-void _Game::SaveGame()
-{
-
-}
 #endif
