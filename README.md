@@ -1,6 +1,6 @@
 # Caro
 Hello anh em.
-Hôm nay t sẽ giải thích rõ hơn về github
+Hôm nay t sẽ giải thích rõ hơn về github.
 Khi mới bắt đầu làm thì mình cần clone resposity về (đã làm rùi)
 Bây giờ mỗi ngày anh em sẽ vào làm đồ án thì làm theo các bước sau:
 vì trc đó đã có người làm nên anh em sẽ chọn branch master và chọn fetch origin để cập nhật code của ae.
