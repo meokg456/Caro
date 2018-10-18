@@ -30,6 +30,7 @@ public:
 
 	void moveLeft();
 	void moveUp();
+	void SaveGame();
 	void moveDown();
 	void exitGame();
 	_Game(int, int, int);
@@ -178,5 +179,8 @@ void _Game::moveUp() {
 	}
 }
 
+void _Game::SaveGame()
+{
 
+}
 #endif
