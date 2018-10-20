@@ -115,12 +115,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Design.h" />
     <ClInclude Include="_Board.h" />
     <ClInclude Include="_Common.h" />
     <ClInclude Include="_Game.h" />
     <ClInclude Include="_Point.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Design.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="_Board.cpp" />
     <ClCompile Include="_Common.cpp" />

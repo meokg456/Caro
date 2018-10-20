@@ -1,4 +1,5 @@
 ﻿#include"_Game.h"
+#include "Design.h"
 _Game::_Game(int pSize, int pLeft, int pTop) {
 	_b = new _Board(pSize, pLeft, pTop);
 	_loop = _turn = true;
@@ -41,11 +42,14 @@ bool _Game::processCheckBoard()
 	switch (_b->checkBoard(_x, _y, _turn))
 	{
 	case -1:
+		Design::SetColor(12);//Tạo màu đỏ
 		printf("X");
+		Design::SetColor(15);//Trả lại màu trắng cho console
 		break;
 	case 1:
-
+		Design::SetColor(14);//Tạo màu vàng
 		printf("O");
+		Design::SetColor(15);//Trả lại màu trắng cho console
 		break;
 	case 0: return false; // Khi đánh vào ô đã đánh rồi
 
