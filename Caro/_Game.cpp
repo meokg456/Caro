@@ -47,7 +47,7 @@ bool _Game::processCheckBoard()
 		Design::SetColor(15);//Trả lại màu trắng cho console
 		break;
 	case 1:
-		Design::SetColor(14);//Tạo màu vàng
+		Design::SetColor(11);//Tạo màu xanh duong nhat
 		printf("O");
 		Design::SetColor(15);//Trả lại màu trắng cho console
 		break;

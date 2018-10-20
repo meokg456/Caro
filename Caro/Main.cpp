@@ -7,7 +7,8 @@ void main() {
 	_Common::resizeConsole(1370, 750);
 	_Common::fixConsoleWindow();
 	//Design::LoadingWord();
-	Design::CaroWord();
+	Design::CaroWord();	Design::Menu(); _getch();
+
 	_Game g(BOARD_SIZE, LEFT, TOP);
 
 	g.startGame();

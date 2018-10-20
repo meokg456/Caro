@@ -27,6 +27,7 @@ public:
 	static void LoadingWord();//Hiển thị loading game
 	static void setFontSize(int FontSize);
 	static void CaroWord();
+	static void Menu();
 };
 
 
