@@ -1,14 +1,13 @@
 ﻿#include "_Game.h"
 #include "Design.h"
 #define BOARD_SIZE 24
-#define LEFT 37
+#define LEFT 45
 #define TOP 5
 void main() {
-	_Common::resizeConsole(1400, 800);
+	_Common::resizeConsole(1370, 750);
 	_Common::fixConsoleWindow();
-
+	//Design::LoadingWord();
 	Design::CaroWord();
-	system("pause");
 	_Game g(BOARD_SIZE, LEFT, TOP);
 
 	g.startGame();
