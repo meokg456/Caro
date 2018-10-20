@@ -50,7 +50,7 @@ void _Board::drawBoard() {
 	if (_pArr == NULL) return; // phải gọi constructor trước
 	
 	//Tạo màu nền bàn cờ
-	Design::SetColor(7);
+	/*Design::SetColor(7);
 	for (int i = 0; i < _size; i++) {
 		for (int j = 0; j < _size; j++) {
 			_Common::gotoXY(_left + 4 * i, _top + 2 * j);
@@ -64,7 +64,7 @@ void _Board::drawBoard() {
 			cout << char(219);
 			cout << char(219);
 		}
-	}
+	}*/
 	Design::SetColor(8);//Tạo màu cho bàn cờ
 	for (int i = 0; i <= _size-1; i++) {// vẽ theo i là vẽ từ trái sang
 		for (int j = 0; j <= _size-1; j++) {// vẽ theo j là vẽ dọc từ trên xuống(vẽ trước)

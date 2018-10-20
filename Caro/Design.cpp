@@ -56,15 +56,9 @@ void Design::CaroWord()
 	int x, y;
 	x = 15;
 	y = 15;
-	
-	Design::SetColor(14);
-	çout << "xoxoxoxoxoxoxoxo"<<en====
-	cout << "xoxoxoxoxoxoxoxo";
-	cout << "xoxoxoxoxoxoxox";
-	
+
 	
 		
-		 
 		
 
 		/*______  __    __   _______     _______._______.

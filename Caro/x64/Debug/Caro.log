@@ -1,15 +1,3 @@
-﻿  Design.cpp
-c:\users\quang hai\documents\github\caro\caro\design.cpp(63): warning C4129: '/': unrecognized character escape sequence
-c:\users\quang hai\documents\github\caro\caro\design.cpp(64): warning C4129: '_': unrecognized character escape sequence
-c:\users\quang hai\documents\github\caro\caro\design.cpp(66): warning C4129: ' ': unrecognized character escape sequence
-c:\users\quang hai\documents\github\caro\caro\design.cpp(66): warning C4129: '|': unrecognized character escape sequence
-c:\users\quang hai\documents\github\caro\caro\design.cpp(67): warning C4129: '/': unrecognized character escape sequence
-c:\users\quang hai\documents\github\caro\caro\design.cpp(68): warning C4129: '_': unrecognized character escape sequence
-c:\users\quang hai\documents\github\caro\caro\design.cpp(68): warning C4129: ')': unrecognized character escape sequence
-c:\users\quang hai\documents\github\caro\caro\design.cpp(75): warning C4129: ' ': unrecognized character escape sequence
-c:\users\quang hai\documents\github\caro\caro\design.cpp(76): warning C4129: ' ': unrecognized character escape sequence
-c:\users\quang hai\documents\github\caro\caro\design.cpp(77): warning C4129: ' ': unrecognized character escape sequence
-c:\users\quang hai\documents\github\caro\caro\design.cpp(77): warning C4129: '-': unrecognized character escape sequence
-c:\users\quang hai\documents\github\caro\caro\design.cpp(78): warning C4129: '_': unrecognized character escape sequence
-c:\users\quang hai\documents\github\caro\caro\design.cpp(78): warning C4129: ' ': unrecognized character escape sequence
-  Caro.vcxproj -> C:\Users\Quang Hai\Documents\GitHub\Caro\x64\Debug\Caro.exe
+﻿  Main.cpp
+c:\users\dung\documents\github\caro\caro\main.cpp(6): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  Caro.vcxproj -> C:\Users\Dung\Documents\GitHub\Caro\x64\Debug\Caro.exe
