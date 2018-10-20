@@ -1,4 +1,5 @@
 ﻿#include"_Board.h"
+#include "Design.h"
 int _Board::getSize() { return _size; }
 int _Board::getLeft() { return _left; }
 int _Board::getTop() { return _top; }
@@ -47,14 +48,79 @@ void _Board::resetData() {
 }
 void _Board::drawBoard() {
 	if (_pArr == NULL) return; // phải gọi constructor trước
-	for (int i = 0; i <= _size; i++) {					// vẽ theo i là vẽ từ trái sang
-		for (int j = 0; j <= _size; j++) {
-			_Common::gotoXY(_left + 4 * i, _top + 2 * j);// vẽ theo j là vẽ dọc từ trên xuống(vẽ trước)
-			printf(".");
+	
+	//Tạo màu nền bàn cờ
+	Design::SetColor(7);
+	for (int i = 0; i < _size; i++) {
+		for (int j = 0; j < _size; j++) {
+			_Common::gotoXY(_left + 4 * i, _top + 2 * j);
+			cout << char(219);
+			cout << char(219);
+			cout << char(219);
+			cout << char(219);
+			_Common::gotoXY(_left + 4 * i, _top + 2 * j + 1);
+			cout << char(219);
+			cout << char(219);
+			cout << char(219);
+			cout << char(219);
+		}
+	}
+	Design::SetColor(8);//Tạo màu cho bàn cờ
+	for (int i = 0; i <= _size-1; i++) {// vẽ theo i là vẽ từ trái sang
+		for (int j = 0; j <= _size-1; j++) {// vẽ theo j là vẽ dọc từ trên xuống(vẽ trước)
+
+			//Vẽ kẻ dọc 
+			_Common::gotoXY(_left + 4 * i, _top + 2 * j);
+			cout << char(179);
+			_Common::gotoXY(_left + 4 * i, _top + 2 * j+1);
+			cout << char(179);
+			//Vẽ kẻ ngang
+			_Common::gotoXY(_left + 4 * i, _top + 2 * j);
+			cout << char(196);
+			cout << char(196);
+			cout << char(196);
+			cout << char(196);
 
 		}
-
 	}
+
+	for (int j = 0; j < _size; j++) {
+		//Tô viền trái
+		_Common::gotoXY(_left + 4 * 0, _top + 2 * j);
+		cout << char(219);
+		_Common::gotoXY(_left + 4 * 0, _top + 2 * j + 1);
+		cout << char(219);
+
+		// Tô viền phải
+		_Common::gotoXY(_left + 4 * (_size), _top + 2 * j);
+		cout << char(219);
+		_Common::gotoXY(_left + 4 * (_size), _top + 2 * j + 1);
+		cout << char(219);
+
+		// Tô viền trên
+		_Common::gotoXY(_left + 4 * j, _top + 2*0);
+		cout << char(223);
+		cout << char(223);
+		cout << char(223);
+		cout << char(223);
+
+		// Tô viền dưới
+		_Common::gotoXY(_left + 4 * j, _top + 2 * (_size));
+		cout << char(223);
+		cout << char(223);
+		cout << char(223);
+		cout << char(223);
+	}
+
+	//Lấp góc trống trái trên
+	_Common::gotoXY(_left + 4 * 0, _top + 2 * 0);
+	cout << "X";
+
+	// Lấp góc trống phải dưới
+	_Common::gotoXY(_left + 4 * (_size), _top + 2 * (_size));
+	cout << "O";
+
+	Design::SetColor(15);// Trả lại kí tự màu trắng cho console
 	_Common::gotoXY(_pArr[0][0].getX(), _pArr[0][0].getY());// di chuyển vào ô đầu
 
 }
