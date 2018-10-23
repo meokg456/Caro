@@ -156,6 +156,8 @@ void Design::Menu(int left,int top,int size)
 	_Common::gotoXY(inofleft, inofright);
 	cout << " New Game";
 	_Common::gotoXY(inofleft, inofright += 5);
+	cout << " Load Game";
+	_Common::gotoXY(inofleft, inofright += 5);
 	cout << " One Player";
 	_Common::gotoXY(inofleft, inofright += 5);
 	cout << " Exit Game";
@@ -167,7 +169,7 @@ int Design::RunMenu(int left, int top, int size)
 	int lleft = left + 21;
 	int ltop = top + 2;
 	int i = 1;
-	int NUMLIST = 3;
+	int NUMLIST = 4;
 	ConTro(lleft, ltop, i);
 	while (true) {
 
