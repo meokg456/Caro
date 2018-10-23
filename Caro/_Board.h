@@ -23,6 +23,7 @@ public:
 	int getTop();
 	int getXAt(int, int);
 	int getYAt(int, int);
+	void setCheck(int, int,int);
 	void resetData();
 	void drawBoard();
 	int checkBoard(int, int, bool);
@@ -36,6 +37,7 @@ public:
 	int KiemTraNgang();
 	int KiemTraCheoTrai();
 	int KiemTraCheoPhai();
+	friend class _Game;//thêm cái này để class Game gọi được các private trong class Board
 };
  int _Board::getSize() { return _size; }
  int _Board::getLeft() { return _left; }
@@ -50,6 +52,10 @@ public:
 	 return _pArr[i][j].getY();
 
  }
+void _Board::setCheck(int x, int y,int valua)
+{
+	_pArr[x][y].setCheck(valua);
+}
  _Board::_Board(int pSize, int pX, int pY) {
 
 	 _size = pSize;

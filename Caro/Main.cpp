@@ -8,14 +8,27 @@ void main() {
 
 	_Game g(BOARD_SIZE, LEFT, TOP);
 
+	/*cout << "hay la em cua ngya hom qua" << endl;*/
+	char test;
+	cout << "neu muon load lai game thi nhan phim T: " ;
+	cin >> test;
+	if (test == 'T')
+		g.LoadGame();
+	else
 	g.startGame();
 
 	while (g.isContinue()) {
 
 		g.waitKeyBoard();
 
-		if (g.getCommand() == 27) g.exitGame();
-
+		if (g.getCommand() == 27) {
+			system("cls");
+			cout << "neu muon luu thi nhan phim L: ";
+			cin >> test;
+			if (test == 'L')
+				g.SaveGame();
+			g.exitGame();
+		}
 		else {
 
 			switch (g.getCommand()) {
@@ -54,7 +67,14 @@ void main() {
 
 					case -1: case 1: case 0:;
 					if (g.askContinue() == 'Y')  g.startGame();
-					else g.exitGame();
+					else {
+						g.exitGame();
+						system("cls");
+						cout << "neu muon luu thi nhan phim L: ";
+						cin >> test;
+						if (test == 'L')
+							g.SaveGame();
+					}
 					}
 
 				}
