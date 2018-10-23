@@ -1,5 +1,0 @@
-﻿  Main.cpp
-c:\users\pc\documents\github\caro\caro\_game.h(218): warning C4101: 'y': unreferenced local variable
-c:\users\pc\documents\github\caro\caro\_game.h(218): warning C4101: 'x': unreferenced local variable
-  Caro.vcxproj -> C:\Users\PC\Documents\GitHub\Caro\x64\Debug\Caro.exe
-  Caro.vcxproj -> C:\Users\PC\Documents\GitHub\Caro\x64\Debug\Caro.pdb (Partial PDB)

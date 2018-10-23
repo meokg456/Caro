@@ -85,6 +85,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <SubSystem>NotSet</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -115,13 +118,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Design.h" />
     <ClInclude Include="_Board.h" />
     <ClInclude Include="_Common.h" />
     <ClInclude Include="_Game.h" />
     <ClInclude Include="_Point.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Design.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="_Board.cpp" />
+    <ClCompile Include="_Common.cpp" />
+    <ClCompile Include="_Game.cpp" />
+    <ClCompile Include="_Point.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

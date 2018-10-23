@@ -1,6 +1,7 @@
 ﻿#ifndef _Game_H
 #define _Game_H
 #include"_Board.h"
+
 #include <string>
 #include <fstream>
 class _Game {
@@ -32,14 +33,17 @@ public:
 
 	void moveLeft();
 	void moveUp();
+
 	void SaveGame();
 	void LoadGame();
+
 	void moveDown();
 	void exitGame();
 	_Game(int, int, int);
 	~_Game();
 
 };
+
 
 _Game::_Game(int pSize, int pLeft, int pTop) {
 	_b = new _Board(pSize, pLeft, pTop);
@@ -269,4 +273,5 @@ void _Game::LoadGame()
 		f.close();
 	}
 }
+
 #endif

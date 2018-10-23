@@ -39,6 +39,7 @@ public:
 	int KiemTraCheoPhai();
 	friend class _Game;//thêm cái này để class Game gọi được các private trong class Board
 };
+
  int _Board::getSize() { return _size; }
  int _Board::getLeft() { return _left; }
  int _Board::getTop() { return _top; }
@@ -296,5 +297,4 @@ void _Board::setCheck(int x, int y,int valua)
 		 }
 	 return true;
  }
-
 #endif
