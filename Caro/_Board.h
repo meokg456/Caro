@@ -23,7 +23,6 @@ public:
 	int getTop();
 	int getXAt(int, int);
 	int getYAt(int, int);
-	void setCheck(int, int,int);
 	void resetData();
 	void drawBoard();
 	int checkBoard(int, int, bool);

@@ -17,15 +17,6 @@ void main() {
 
 	_Game g(BOARD_SIZE, LEFT, TOP);
 
-
-	char test;
-	cout << "neu muon load lai game thi nhan phim T: " ;
-	cin >> test;
-	if (test == 'T')
-		g.LoadGame();
-	else
-		g.startGame();
-
 	switch (i)
 	{
 	case 1:
@@ -35,10 +26,10 @@ void main() {
 	}
 	case 2:
 	{
-		// Xu ly choi voi may' 
+		g.LoadGame();
 		break;
 	}
-	case 3:
+	case 4:
 	{
 		g.exitGame();
 		break;
@@ -48,17 +39,6 @@ void main() {
 	while (g.isContinue()) {
 
 		g.waitKeyBoard();
-
-		if (g.getCommand() == 27) {
-			system("cls");
-			cout << "neu muon luu thi nhan phim L: ";
-			cin >> test;
-			if (test == 'L')
-				g.SaveGame();
-			g.exitGame();
-		}
-		else {
-
 			switch (g.getCommand()) {
 
 			case 'A':
@@ -84,7 +64,15 @@ void main() {
 				g.moveRight();
 
 				break;
-
+			case 27:
+				g.exitGame();
+				break;
+			case 'L':
+				g.SaveGame();
+				break;
+			case'T':
+				g.LoadGame();
+				break;
 			case 13:
 
 				//Đánh dấu bàn cờ, sau đó kiểm tra và xử lý thắng/thua/hòa/tiếp tục
@@ -97,13 +85,8 @@ void main() {
 					if (g.askContinue() == 'Y')  g.startGame();
 					else {
 						g.exitGame();
-						system("cls");
-						cout << "neu muon luu thi nhan phim L: ";
-						cin >> test;
-						if (test == 'L')
-							g.SaveGame();
 					}
-					}
+					
 
 				}
 
