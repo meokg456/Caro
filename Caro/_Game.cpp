@@ -169,33 +169,12 @@ void _Game::SaveGame()
 			if (f.fail()) break;
 		}
 		f.close();
-		system("cls");
-		_b->drawBoard();
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				if (_b->_pArr[i][j].getCheck() != 0) {
-					_Common::gotoXY(_b->_pArr[i][j].getX(), _b->_pArr[i][j].getY());
-					switch (_b->_pArr[i][j].getCheck())
-					{
-					case -1:
-						Design::SetColor(12);//Tạo màu đỏ
-						printf("X");
-						Design::SetColor(15);//Trả lại màu trắng cho console
-						break;
-					case 1:
-						Design::SetColor(11);//Tạo màu xanh duong nhat
-						printf("O");
-						Design::SetColor(15);//Trả lại màu trắng cho console
-						break;
-					}
-				}
-			}
-		}
 		}
 }
 void _Game::LoadGame()
 {
 	string name;
+	Design::SetColor(15);
 	system("cls");
 	cout << "Nhap ten file: ";
 	fflush(stdin);
@@ -257,8 +236,6 @@ void _Game::LoadGame()
 			}
 			return;
 		}
-		_Common::gotoXY(_x, _y);
-		_turn = !_turn;
 		f.close();
 	}
 }
