@@ -147,6 +147,7 @@ void _Game::moveUp() {
 void _Game::SaveGame()
 {
 	string name;
+	system("cls");
 	cout << "nhap ten file ban muon luu: ";
 	fflush(stdin);
 	cin >> name;
@@ -168,12 +169,35 @@ void _Game::SaveGame()
 			if (f.fail()) break;
 		}
 		f.close();
-	}
+		system("cls");
+		_b->drawBoard();
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				if (_b->_pArr[i][j].getCheck() != 0) {
+					_Common::gotoXY(_b->_pArr[i][j].getX(), _b->_pArr[i][j].getY());
+					switch (_b->_pArr[i][j].getCheck())
+					{
+					case -1:
+						Design::SetColor(12);//Tạo màu đỏ
+						printf("X");
+						Design::SetColor(15);//Trả lại màu trắng cho console
+						break;
+					case 1:
+						Design::SetColor(11);//Tạo màu xanh duong nhat
+						printf("O");
+						Design::SetColor(15);//Trả lại màu trắng cho console
+						break;
+					}
+				}
+			}
+		}
+		}
 }
 void _Game::LoadGame()
 {
 	string name;
-	cout << "nhap ten file: ";
+	system("cls");
+	cout << "Nhap ten file: ";
 	fflush(stdin);
 	cin >> name;
 	ifstream f(name);
@@ -207,11 +231,14 @@ void _Game::LoadGame()
 					switch (_b->_pArr[i][j].getCheck())
 					{
 					case -1:
+						Design::SetColor(12);//Tạo màu đỏ
 						printf("X");
+						Design::SetColor(15);//Trả lại màu trắng cho console
 						break;
 					case 1:
-
+						Design::SetColor(11);//Tạo màu xanh duong nhat
 						printf("O");
+						Design::SetColor(15);//Trả lại màu trắng cho console
 						break;
 					}
 					turn = !turn;
