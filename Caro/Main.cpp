@@ -65,14 +65,15 @@ void main() {
 
 				break;
 			case 27:
+				g.SaveGame();
 				g.exitGame();
 				break;
-			case 'L':
+			/*case 'L'://để thế này thì không thể gọi được khi đang chơi dở
 				g.SaveGame();
 				break;
 			case'T':
 				g.LoadGame();
-				break;
+				break;*/
 			case 13:
 
 				//Đánh dấu bàn cờ, sau đó kiểm tra và xử lý thắng/thua/hòa/tiếp tục
@@ -85,6 +86,7 @@ void main() {
 					if (g.askContinue() == 'Y')  g.startGame();
 					else {
 						g.exitGame();
+						g.SaveGame();
 					}
 					
 

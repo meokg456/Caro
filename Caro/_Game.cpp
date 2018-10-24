@@ -250,7 +250,10 @@ void _Game::LoadGame()
 			switch (processFinish()) {
 
 			case -1: case 1: case 0:;
-				if (askContinue() == 'Y')  startGame();
+				if (askContinue() == 'Y') {
+					_loop = true;
+					startGame();
+				}
 			}
 			return;
 		}
