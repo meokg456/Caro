@@ -2,6 +2,8 @@
 #define _Game_H
 #include"_Board.h"
 
+#include <string>
+#include <fstream>
 class _Game {
 
 	_Board* _b;// một bàn cờ
@@ -31,12 +33,18 @@ public:
 
 	void moveLeft();
 	void moveUp();
+
+	void SaveGame();
+	void LoadGame();
+
 	void moveDown();
 	void exitGame();
 	_Game(int, int, int);
 	~_Game();
 
 };
+
+
 
 
 #endif

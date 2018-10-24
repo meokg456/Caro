@@ -36,6 +36,8 @@ public:
 	int KiemTraNgang();
 	int KiemTraCheoTrai();
 	int KiemTraCheoPhai();
+	friend class _Game;//thêm cái này để class Game gọi được các private trong class Board
 };
+
  
 #endif

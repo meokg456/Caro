@@ -10,12 +10,11 @@
 #define SIZE_menu  29
 
 void main() {
-	for (int i = 0; i < 256; i++) {
+	/*for (int i = 0; i < 256; i++) {
 		Design::SetColor(i);
 		cout << "\n=> MAU: " << i;
 	}
-	_getch();
-	
+	_getch();*/
 	
 	_Common::fixConsoleWindow();
 	/*Design::GamOverWord(55, 25);
@@ -25,6 +24,7 @@ void main() {
 	_getch();
 
 	_Game g(BOARD_SIZE, LEFT, TOP);
+
 	switch (i)
 	{
 	case 1:
@@ -36,23 +36,19 @@ void main() {
 	}
 	case 2:
 	{
-		// Xu ly choi voi may' 
+		g.LoadGame();
 		break;
 	}
-	case 3:
+	case 4:
 	{
 		g.exitGame();
 		break;
 	}
 	}
+
 	while (g.isContinue()) {
 
 		g.waitKeyBoard();
-
-		if (g.getCommand() == 27) g.exitGame();
-
-		else {
-
 			switch (g.getCommand()) {
 
 			case 'A':
@@ -78,7 +74,15 @@ void main() {
 				g.moveRight();
 
 				break;
-
+			case 27:
+				g.exitGame();
+				break;
+			case 'L':
+				g.SaveGame();
+				break;
+			case'T':
+				g.LoadGame();
+				break;
 			case 13:
 
 				//Đánh dấu bàn cờ, sau đó kiểm tra và xử lý thắng/thua/hòa/tiếp tục
@@ -88,8 +92,10 @@ void main() {
 
 					case -1: case 1: case 0:;
 					if (g.askContinue() == 'Y')  g.startGame();
-					else g.exitGame();
+					else {
+						g.exitGame();
 					}
+					
 
 				}
 

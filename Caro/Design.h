@@ -19,6 +19,8 @@ public:
 	static void Clear();
 	static void ThongTin1NguoiChoi(int x,int y);
 	static void ThongTin2NguoiChoi();
+	static void Winword(int ,int);
+	static void Loseword(int, int);
 };
 
 

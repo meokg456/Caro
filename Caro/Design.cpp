@@ -165,6 +165,8 @@ void Design::Menu(int left,int top,int size)
 	_Common::gotoXY(inofleft, inofright);
 	cout << " New Game";
 	_Common::gotoXY(inofleft, inofright += 5);
+	cout << " Load Game";
+	_Common::gotoXY(inofleft, inofright += 5);
 	cout << " One Player";
 	_Common::gotoXY(inofleft, inofright += 5);
 	cout << " Exit Game";
@@ -176,7 +178,7 @@ int Design::RunMenu(int left, int top, int size)
 	int lleft = left + 21;
 	int ltop = top + 2;
 	int i = 1;
-	int NUMLIST = 3;
+	int NUMLIST = 4;
 	ConTro(lleft, ltop, i);
 	while (true) {
 
@@ -331,3 +333,68 @@ void Design::ThongTin2NguoiChoi() {
 	cout << char(36);
 }
 
+void Design::Winword(int x,int y)
+{
+	int temp = y;//Lưu giá trị của y 
+	Design::SetColor(78);
+	for (int i = 0; i <48; i++)
+	{
+		_Common::gotoXY(x + 1, temp);
+		cout << "                                            ";
+		temp++;
+	}
+	x = x + 15;
+	y= y + 10;
+	string s[16];
+	int i = 0;
+	//Doc chu Win tu file
+	ifstream filein("win.txt", ios::in);
+	if (filein) {
+		while (!filein.eof()) {
+			getline(filein, s[i]);
+			s[i] = s[i] + "\n";
+			i++;
+		}
+	}
+	filein.close();
+
+	for (int i = 0; i < 16; i++)
+	{
+		_Common::gotoXY(x, y);
+		cout << s[i];
+		y++;
+	}
+	
+}
+
+void Design::Loseword(int x, int y)
+{
+	int temp = y;//Lưu giá trị của y 
+	Design::SetColor(131);
+	for (int i = 0; i < 48; i++)
+	{
+		_Common::gotoXY(x + 1, temp);
+		cout << "                                            ";
+		temp++;
+	}
+	x = x + 15;
+	y = y + 10;
+	string s[16];
+	int i = 0;
+	//Doc chu Win tu file
+	ifstream filein("lose.txt", ios::in);
+	if (filein) {
+		while (!filein.eof()) {
+			getline(filein, s[i]);
+			s[i] = s[i] + "\n";
+			i++;
+		}
+	}
+	filein.close();
+	for (int i = 0; i < 16; i++)
+	{
+		_Common::gotoXY(x, y);
+		cout << s[i];
+		y++;
+	}
+}
