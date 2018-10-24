@@ -4,10 +4,19 @@
 
 void Design::SetColor(unsigned short i)
 {
-	HANDLE hcon = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(hcon, i);
+	HANDLE mau;
+	mau = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(mau, i);
 }
-
+void Design::Clear()
+{
+	HANDLE hOut;
+	COORD Position;
+	hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	Position.X = 0;
+	Position.Y = 0;
+	SetConsoleCursorPosition(hOut, Position);
+}
 void Design::LoadingWord()
 {
 	int x = 20;
@@ -216,3 +225,109 @@ void Design::ConTro(int left, int top, int k)
 	cout << char(174);
 
 }
+
+void Design::GamOverWord(int left, int top)
+{
+	string s[6];
+	int i = 0;
+
+	//Đọc chữ GameOver từ file đã vẽ trước đó
+	ifstream filein("GameOver.txt",ios::in);
+	if (filein) {
+		while (!filein.eof()) {
+			getline(filein, s[i]);
+			s[i] = s[i] + "\n";
+			i++;
+		}
+	}
+	filein.close();
+	//In chữ GameOver ra màn hình
+	int x;
+	int y;
+	SetColor(12);
+	
+
+	//Tạo sự chuyển động
+	x = 10;
+	y = top;
+	while (x < left)
+	{
+		y = top;
+		for (int i = 0; i < 6; i++) {
+			_Common::gotoXY(x, y);
+			cout << s[i];
+			y++;
+		}
+		x++;
+		Sleep(20);
+		system("cls");
+	}
+}
+
+
+
+void Design::ThongTin1NguoiChoi(int x,int y) {
+	
+	SetColor(241);
+	int size = 15;//size khung
+	//mau nen khung
+	for (int i = 0; i <= size+2; i++) {
+		_Common::gotoXY(x, y + i);
+		cout << "                               ";
+	}
+	for (int i = 0; i <=size; i++) {
+		//kẻ viền phải
+		_Common::gotoXY(x + size*2, y + i+1);
+		cout << char(179);
+		
+		//ke vien trai
+		_Common::gotoXY(x, y + i+1);
+		cout <<char(179);
+
+		////kẻ viển trên
+		_Common::gotoXY(x+1 + i, y);
+		cout << "______________";
+
+		//ke vien duoi
+		_Common::gotoXY(x + 1 + i, y+size+1);
+		cout << "______________";
+
+		//ke o ngang
+		_Common::gotoXY(x + 1 + i, y + 3);
+		cout << "______________";
+	}
+
+	//Dien thong tin
+	_Common::gotoXY(x+10, y+2);
+	cout << "Nguoi Choi 1";
+	
+	SetColor(244);
+	_Common::gotoXY(x + 5, y + 10);
+	cout << "Diem: ";
+	_Common::gotoXY(x + 5, y + 8);
+	cout << "X: ";
+	SetColor(242);
+	_Common::gotoXY(x + 20, y + 10);
+	cout << char(36);
+}
+
+void Design::ThongTin2NguoiChoi() {
+	//Nguoi choi 1
+	ThongTin1NguoiChoi(1, 20);
+	//Nguoi choi 2
+	ThongTin1NguoiChoi(135, 20);
+	// Dien lai thong tin nguoi choi 2
+	int x = 135, y = 20;
+	SetColor(241);
+	_Common::gotoXY(x + 10, y + 2);
+	cout << "Nguoi Choi 2";
+	SetColor(243);
+	_Common::gotoXY(x + 5, y + 10);
+	cout << "Diem: ";
+	_Common::gotoXY(x + 5, y + 8);
+	cout << "O: ";
+	SetColor(242);
+	_Common::gotoXY(x + 20, y + 10);
+	cout << char(36);
+}
+

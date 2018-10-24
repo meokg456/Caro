@@ -1,17 +1,26 @@
 ﻿#include "_Game.h"
 #include "Design.h"
 #define BOARD_SIZE 24
-#define LEFT 45
+#define LEFT 35
 #define TOP 5
 #define LEFT_caro 55
 #define TOP_caro 5
 #define LEFT_menu  60
 #define TOP_menu   20
 #define SIZE_menu  29
+
 void main() {
-	_Common::resizeConsole(1370, 750);
+	for (int i = 0; i < 256; i++) {
+		Design::SetColor(i);
+		cout << "\n=> MAU: " << i;
+	}
+	_getch();
+	
+	
 	_Common::fixConsoleWindow();
-	//Design::LoadingWord();
+	/*Design::GamOverWord(55, 25);
+	_getch();*/
+	
 	Design::CaroWord(LEFT_caro,TOP_caro);	int i = Design::RunMenu(LEFT_menu,TOP_menu,SIZE_menu); 
 	_getch();
 
@@ -20,7 +29,9 @@ void main() {
 	{
 	case 1:
 	{
+		/*Design::LoadingWord();*/
 		g.startGame();
+		Design::ThongTin2NguoiChoi();
 		break;
 	}
 	case 2:
@@ -71,7 +82,6 @@ void main() {
 			case 13:
 
 				//Đánh dấu bàn cờ, sau đó kiểm tra và xử lý thắng/thua/hòa/tiếp tục
-
 				if (g.processCheckBoard()) {
 
 					switch (g.processFinish()) {
