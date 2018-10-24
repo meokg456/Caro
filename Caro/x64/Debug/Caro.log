@@ -1,9 +1,4 @@
-﻿  Design.cpp
-  Main.cpp
-c:\users\pc\documents\github\caro\caro\main.cpp(11): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  _Board.cpp
-  _Game.cpp
+﻿  _Game.cpp
 c:\users\pc\documents\github\caro\caro\_game.cpp(205): warning C4101: 'y': unreferenced local variable
 c:\users\pc\documents\github\caro\caro\_game.cpp(205): warning C4101: 'x': unreferenced local variable
-  Generating Code...
   Caro.vcxproj -> C:\Users\PC\Documents\GitHub\Caro\x64\Debug\Caro.exe
