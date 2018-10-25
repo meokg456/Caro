@@ -5,7 +5,7 @@ _Game::_Game(int pSize, int pLeft, int pTop) {
 	_loop = _turn = true;
 	_command = -1; // Gán lượt và phím mặc định
 	_x = pLeft; _y = pTop;
-
+	
 }
 
 _Game::~_Game() { delete _b; }
@@ -17,7 +17,7 @@ char _Game::waitKeyBoard() {
 	return _command;
 }
 char _Game::askContinue() {
-	_Common::gotoXY(0, _b->getYAt(_b->getSize() - 1, _b->getSize() - 1) + 3);// Đưa con trỏ ra khỏi bàn cờ để không cho người chơi 
+	_Common::gotoXY(0, _b->getYAt(_b->getSize() - 1, _b->getSize() - 1) + 5);// Đưa con trỏ ra khỏi bàn cờ để không cho người chơi 
 																			// tiếp tục đánh 
 	cout << "Ban co muon choi lai khong? (y/n)" << endl;
 	return waitKeyBoard();
@@ -29,7 +29,7 @@ void _Game::startGame() {
 	_b->drawBoard(); // Vẽ màn hình game
 	_x = _b->getXAt(0, 0);
 	_y = _b->getYAt(0, 0);
-
+	DemX = 0; DemO = 0;
 }
 void _Game::exitGame() {
 	system("cls");
@@ -42,17 +42,27 @@ bool _Game::processCheckBoard()
 	switch (_b->checkBoard(_x, _y, _turn))
 	{
 	case -1:
+	{
+
 		Design::SetColor(12);//Tạo màu đỏ
 		printf("X");
+		DemX++;
 		Design::SetColor(15);//Trả lại màu trắng cho console
 		break;
+	}
 	case 1:
+	{
 		Design::SetColor(11);//Tạo màu xanh duong nhat
 		printf("O");
+		DemO++;
 		Design::SetColor(15);//Trả lại màu trắng cho console
 		break;
-	case 0: return false; // Khi đánh vào ô đã đánh rồi
+	}
+	case 0:
+	{
 
+		return false; // Khi đánh vào ô đã đánh rồi
+	}
 	}
 	return true;
 
@@ -239,3 +249,4 @@ void _Game::LoadGame()
 		f.close();
 	}
 }
+

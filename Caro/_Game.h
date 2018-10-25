@@ -16,6 +16,8 @@ class _Game {
 
 	bool _loop; // Biến quyết định thoát game hay không
 
+	int DemX, DemO;// Đếm số lượng quân X và O đã đánh trong 1 ván đấu
+
 public:
 	int getCommand();
 

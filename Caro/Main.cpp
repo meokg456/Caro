@@ -82,14 +82,11 @@ void main() {
 
 					switch (g.processFinish()) {
 
-					case -1: case 1: case 0:;
+					case -1: case 1: case 0:
+					/*	cout << " Ban co muon luu van dau nay khong?(Y/N)" << endl;
+					if(_getch()==27)
+						g.SaveGame();*/
 					if (g.askContinue() == 'Y')  g.startGame();
-					else {
-						g.exitGame();
-						g.SaveGame();
-					}
-					
-
 				}
 
 			}
