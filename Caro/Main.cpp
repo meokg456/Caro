@@ -20,7 +20,8 @@ void main() {
 	/*Design::GamOverWord(55, 25);
 	_getch();*/
 	
-	Design::CaroWord(LEFT_caro,TOP_caro);	int i = Design::RunMenu(LEFT_menu,TOP_menu,SIZE_menu); 
+	Design::CaroWord(LEFT_caro,TOP_caro);	
+	int i = Design::RunMenu(LEFT_menu, TOP_menu, SIZE_menu);
 	_getch();
 
 	_Game g(BOARD_SIZE, LEFT, TOP);
@@ -30,8 +31,9 @@ void main() {
 	case 1:
 	{
 		/*Design::LoadingWord();*/
-		g.startGame();
 		Design::ThongTin2NguoiChoi();
+		Design::SetColor(15);//Trả lại nền đen màu trắng
+		g.startGame();
 		break;
 	}
 	case 2:

@@ -24,7 +24,6 @@ char _Game::askContinue() {
 }
 void _Game::startGame() {
 
-	system("cls");
 	_b->resetData(); // Khởi tạo dữ liệu gốc
 	_b->drawBoard(); // Vẽ màn hình game
 	_x = _b->getXAt(0, 0);
@@ -67,23 +66,24 @@ int _Game::processFinish()
 	switch (pWhoWin) {
 		
 	case -1:
-		//Ve nen chu Winword
-		Design::Winword(35, 5);
-		Design::Loseword(86, 5);
+		//Người chơi 1 thắng , người chơi 2 thua
+		//vẽ hiệu ứng thắng thua
+		Design::Winword(34, 5);
+		Design::Loseword(83, 5);
 		_Common::gotoXY(0, _b->getYAt(_b->getSize() - 1, _b->getSize() - 1) + 2);
-		printf("Nguoi choi %d da thang va nguoi choi %d da thua\n", true, false+2);
-		//Nguoi choi 1 win, Nguoi choi 2 lose
 		break;
 	case 1:
+		//Người chơi 2 thắng , người chơi 1 thua
+		//vẽ hiệu ứng thắng thua
+		Design::Loseword(34, 5);
+		Design::Winword(82, 5);
 		_Common::gotoXY(0, _b->getYAt(_b->getSize() - 1, _b->getSize() - 1) + 2);
-		printf("Nguoi choi %d da thang va nguoi choi %d da thua\n", false+2, true+1);
 
 		break;
 
 	case 0:
 		_Common::gotoXY(0, _b->getYAt(_b->getSize() - 1, _b->getSize() - 1) + 2);
 		printf("Nguoi choi %d da hoa nguoi choi %d\n", false, true);
-
 		break;
 
 	case 2:

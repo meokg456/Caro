@@ -340,7 +340,7 @@ void Design::Winword(int x,int y)
 	for (int i = 0; i <48; i++)
 	{
 		_Common::gotoXY(x + 1, temp);
-		cout << "                                            ";
+		cout << "                                                 ";
 		temp++;
 	}
 	x = x + 15;
@@ -374,7 +374,7 @@ void Design::Loseword(int x, int y)
 	for (int i = 0; i < 48; i++)
 	{
 		_Common::gotoXY(x + 1, temp);
-		cout << "                                            ";
+		cout << "                                                ";
 		temp++;
 	}
 	x = x + 15;
