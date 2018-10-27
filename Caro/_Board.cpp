@@ -118,7 +118,6 @@ int _Board::checkBoard(int pX, int pY, bool pTurn)// pX: hoành độ quân cờ
 				if (pTurn) _pArr[i][j].setCheck(-1);// Nếu lượt hiện hành là true: c = -1
 
 				else _pArr[i][j].setCheck(1);// Nếu lượt hiện hành là false: c = 1
-				vt.x = i; vt.y = j;
 				return _pArr[i][j].getCheck();
 
 			}
