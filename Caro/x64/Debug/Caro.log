@@ -1,4 +1,1 @@
-﻿  _Game.cpp
-c:\users\dell\desktop\lt_oop\baitaptuan3\caro\caro\_game.cpp(196): warning C4101: 'y': unreferenced local variable
-c:\users\dell\desktop\lt_oop\baitaptuan3\caro\caro\_game.cpp(196): warning C4101: 'x': unreferenced local variable
-  Caro.vcxproj -> C:\Users\DELL\Desktop\LT_OOP\BaiTapTuan3\Caro\x64\Debug\Caro.exe
+﻿  Caro.vcxproj -> C:\Users\DELL\Desktop\Caro\x64\Debug\Caro.exe
