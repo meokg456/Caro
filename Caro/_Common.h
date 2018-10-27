@@ -1,8 +1,8 @@
 ﻿#ifndef _COMMON_H
 #define _COMMON_H
 #include <iostream>
-#include <Windows.h>
 using namespace std;
+#include <Windows.h>
 #include <conio.h>
 class _Common {
 public:
