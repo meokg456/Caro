@@ -498,6 +498,7 @@ int _Board::DiemPhongNguDoc_DaDanh(int dong, int cot)
 		else break;
 	}
 	if (SoQuanTa == 2 && SoQuanDich < 4) return 0;
+	if (SoQuanDich == 4) return MangDiemPhongNgu[6];
 	DiemTong += MangDiemPhongNgu[SoQuanDich - SoQuanTa];
 	return DiemTong;
 }
@@ -533,6 +534,7 @@ int _Board::DiemPhongNguNgang_DaDanh(int dong, int cot)
 		else break;
 	}
 	if (SoQuanTa == 2 && SoQuanDich < 4) return 0;
+	if (SoQuanDich == 4) return MangDiemPhongNgu[6];
 	DiemTong += MangDiemPhongNgu[SoQuanDich - SoQuanTa];
 	return DiemTong;
 }
@@ -568,6 +570,7 @@ int _Board::DiemPhongNguCheoXuong_DaDanh(int dong, int cot)
 		else break;
 	}
 	if (SoQuanTa == 2 && SoQuanDich < 4) return 0;
+	if (SoQuanDich == 4) return MangDiemPhongNgu[6];
 	DiemTong += MangDiemPhongNgu[SoQuanDich - SoQuanTa];
 	return DiemTong;
 }
@@ -603,6 +606,7 @@ int _Board::DiemPhongNguCheoLen_DaDanh(int dong, int cot)
 		else break;
 	}
 	if (SoQuanTa == 2 && SoQuanDich < 4) return 0;
+	if (SoQuanDich == 4) return MangDiemPhongNgu[6];
 	DiemTong += MangDiemPhongNgu[SoQuanDich - SoQuanTa];
 	return DiemTong;
 }
