@@ -21,21 +21,27 @@ public:
 
 	bool isContinue();
 
+	bool GetTurn();
+
 	char waitKeyBoard(); // Hàm nhận phím từ người dùng
 
 	char askContinue();
 	void startGame(); // Hàm bắt đầu game
+	void resetGame();
+	void LoadGame();
 	int processFinish();
 
 	bool processCheckBoard();
+
+	void SaveGame();
 
 	void moveRight();
 
 	void moveLeft();
 	void moveUp();
 
-	void SaveGame();
-	void LoadGame();
+	void AI(int);
+
 
 	void moveDown();
 	void exitGame();

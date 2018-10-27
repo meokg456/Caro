@@ -12,11 +12,11 @@ void main() {
 	_Common::resizeConsole(1370, 750);
 	_Common::fixConsoleWindow();
 	//Design::LoadingWord();
-	Design::CaroWord(LEFT_caro,TOP_caro);	int i = Design::RunMenu(LEFT_menu,TOP_menu,SIZE_menu); 
+	Design::CaroWord(LEFT_caro, TOP_caro);	int i = Design::RunMenu(LEFT_menu, TOP_menu, SIZE_menu);
 	_getch();
 
 	_Game g(BOARD_SIZE, LEFT, TOP);
-
+	bool AI = false;
 	switch (i)
 	{
 	case 1:
@@ -29,6 +29,12 @@ void main() {
 		g.LoadGame();
 		break;
 	}
+	case 3:
+	{
+		g.startGame();
+		AI = true;
+		break;
+	}
 	case 4:
 	{
 		g.exitGame();
@@ -37,65 +43,67 @@ void main() {
 	}
 
 	while (g.isContinue()) {
+			if (AI == true)
+			{
+				g.AI(1);
+			}
+			else
+			{
+				g.waitKeyBoard();
+				switch (g.getCommand()) {
 
-		g.waitKeyBoard();
-			switch (g.getCommand()) {
+				case 'A':
 
-			case 'A':
+					g.moveLeft();
 
-				g.moveLeft();
+					break;
 
-				break;
+				case 'W':
 
-			case 'W':
+					g.moveUp();
 
-				g.moveUp();
+					break;
 
-				break;
+				case 'S':
 
-			case 'S':
+					g.moveDown();
 
-				g.moveDown();
+					break;
 
-				break;
+				case 'D':
 
-			case 'D':
+					g.moveRight();
 
-				g.moveRight();
+					break;
+				case 27:
+					g.exitGame();
+					break;
+				case 'L':
+					g.SaveGame();
+					break;
+				case'T':
+					g.LoadGame();
+					break;
+				case 13:
 
-				break;
-			case 27:
-				g.SaveGame();
-				g.exitGame();
-				break;
-			/*case 'L'://để thế này thì không thể gọi được khi đang chơi dở
-				g.SaveGame();
-				break;
-			case'T':
-				g.LoadGame();
-				break;*/
-			case 13:
+					//Đánh dấu bàn cờ, sau đó kiểm tra và xử lý thắng/thua/hòa/tiếp tục
 
-				//Đánh dấu bàn cờ, sau đó kiểm tra và xử lý thắng/thua/hòa/tiếp tục
+					if (g.processCheckBoard()) {
 
-				if (g.processCheckBoard()) {
+						switch (g.processFinish()) {
 
-					switch (g.processFinish()) {
+						case -1: case 1: case 0:;
+							if (g.askContinue() == 'Y')  g.startGame();
+							else {
+								g.exitGame();
+							}
 
-					case -1: case 1: case 0:;
-					if (g.askContinue() == 'Y')  g.startGame();
-					else {
-						g.exitGame();
-						g.SaveGame();
+
+						}
+
 					}
-					
 
 				}
-
 			}
-
-		}
-
 	}
-
 }
