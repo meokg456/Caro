@@ -15,29 +15,34 @@ class _Game {
 	int _command; // phím gõ từ người dùng
 
 	bool _loop; // Biến quyết định thoát game hay không
-
-	int DemX, DemO;// Đếm số lượng quân X và O đã đánh trong 1 ván đấu
+	int DemX, DemO;
 
 public:
 	int getCommand();
 
 	bool isContinue();
 
+	bool GetTurn();
+
 	char waitKeyBoard(); // Hàm nhận phím từ người dùng
 
 	char askContinue();
 	void startGame(); // Hàm bắt đầu game
+	void resetGame();
+	void LoadGame();
 	int processFinish();
 
 	bool processCheckBoard();
+
+	void SaveGame();
 
 	void moveRight();
 
 	void moveLeft();
 	void moveUp();
 
-	void SaveGame();
-	void LoadGame();
+	void AI(int);
+
 
 	void moveDown();
 	void exitGame();

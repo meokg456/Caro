@@ -1,12 +1,14 @@
 ﻿#ifndef _BOARD_H
 #define _BOARD_H
 #include"_Point.h"
-#include <iostream>
-using namespace std;
+struct Move
+{
+	int x = 0;
+	int y = 0;
+};
 class _Board {
 
 private:
-
 	int _size;// kích thước dài và rộng của bàn cờ
 
 	int _left, _top;// _left là khoảng cách từ mép TRÁI MÀN HÌNH CONSOLE tới mép TRÁI BÀN CỜ
@@ -15,7 +17,7 @@ private:
 	_Point** _pArr;// Quản lí tất cả vị trí đánh quân cờ(các vị trí trên bàn cờ)
 
 public:
-
+	friend class _Game;	//thêm cái này để class Game gọi được các private trong class Board
 	int getSize();
 
 	int getLeft();
@@ -33,11 +35,19 @@ public:
 
 	int KiemTraDoc();
 	bool isFullBoard();
+	Move Heuristic();
 	int KiemTraNgang();
 	int KiemTraCheoTrai();
 	int KiemTraCheoPhai();
-	
-	friend class _Game;//thêm cái này để class Game gọi được các private trong class Board
+	int DiemTanCongDoc_DaDanh(int dong, int cot);
+	int DiemTanCongNgang_DaDanh(int dong, int cot);
+	int DiemTanCongCheoXuong_DaDanh(int dong, int cot);
+	int DiemTanCongCheoLen_DaDanh(int dong, int cot);
+	int DiemPhongNguDoc_DaDanh(int dong, int cot);
+	int DiemPhongNguNgang_DaDanh(int dong, int cot);
+	int DiemPhongNguCheoXuong_DaDanh(int dong, int cot);
+	int DiemPhongNguCheoLen_DaDanh(int dong, int cot);
+
 };
 
  

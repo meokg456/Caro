@@ -48,23 +48,6 @@ void _Board::resetData() {
 }
 void _Board::drawBoard() {
 	if (_pArr == NULL) return; // phải gọi constructor trước
-	
-	//Tạo màu nền bàn cờ
-	/*Design::SetColor(7);
-	for (int i = 0; i < _size; i++) {
-		for (int j = 0; j < _size; j++) {
-			_Common::gotoXY(_left + 4 * i, _top + 2 * j);
-			cout << char(219);
-			cout << char(219);
-			cout << char(219);
-			cout << char(219);
-			_Common::gotoXY(_left + 4 * i, _top + 2 * j + 1);
-			cout << char(219);
-			cout << char(219);
-			cout << char(219);
-			cout << char(219);
-		}
-	}*/
 	Design::SetColor(8);//Tạo màu cho bàn cờ
 	for (int i = 0; i <= _size-1; i++) {// vẽ theo i là vẽ từ trái sang
 		for (int j = 0; j <= _size-1; j++) {// vẽ theo j là vẽ dọc từ trên xuống(vẽ trước)
@@ -126,7 +109,6 @@ void _Board::drawBoard() {
 }
 int _Board::checkBoard(int pX, int pY, bool pTurn)// pX: hoành độ quân cờ; pY: tung độ quân cờ; pTurn: Trang thái lượt đánh của 2 người
 {
-
 	for (int i = 0; i < _size; i++) {
 
 		for (int j = 0; j < _size; j++) {
@@ -162,7 +144,7 @@ int _Board::testBoard()
 			temp = KiemTraCheoPhai();
 		return temp;
 	}
-} // Trả mặc định là hòa// Viết lại hàm 
+} 
 
 int _Board::KiemTraDoc()
 {
@@ -319,3 +301,313 @@ bool _Board::isFullBoard()
 	return true;
 }
 
+// Tham khảo 
+int MangDiemTanCong[] = { 0, 3, 24, 162, 1536 , 12288, 98304 };
+int MangDiemPhongNgu[] = { 0, 1, 9, 90, 729, 6561, 59049 };
+
+Move _Board::Heuristic()
+{
+	Move best;
+	int DiemMax = 0;
+	for (int i = 0; i < _size; i++)
+	{
+		for (int j = 0; j < _size; j++)
+		{
+			if (_pArr[i][j].getCheck() == 0)
+			{
+				int DiemTanCong = DiemTanCongDoc_DaDanh(i, j) + DiemTanCongNgang_DaDanh(i, j) + DiemTanCongCheoXuong_DaDanh(i, j) + DiemTanCongCheoLen_DaDanh(i, j);
+				int DiemPhongNgu = DiemPhongNguDoc_DaDanh(i, j) + DiemPhongNguNgang_DaDanh(i, j) + DiemPhongNguCheoXuong_DaDanh(i, j) + DiemPhongNguCheoLen_DaDanh(i, j);
+				int DiemTam;
+				if (DiemTanCong > DiemPhongNgu)
+				{
+					DiemTam = DiemTanCong;
+				}
+				else
+				{
+					DiemTam = DiemPhongNgu;
+				}
+				if (DiemMax < DiemTam)
+				{
+					DiemMax = DiemTam;
+					best.x = j;	best.y = i;
+				}
+			}
+		}
+	}
+	return best;
+}
+
+
+int _Board::DiemTanCongDoc_DaDanh(int dong, int cot)
+{
+	int DiemTong = 0;
+	int SoQuanTa = 0;
+	int SoQuanDich = 0;
+	for (int dem = 1; dem < 6 && dong + dem < _size; dem++)
+	{
+		if (_pArr[dong + dem][cot].getCheck() == -1)
+			SoQuanTa++;
+		else if (_pArr[dong + dem][cot].getCheck() == 1)
+		{
+			SoQuanDich++;
+			break;
+		}
+		else break;
+	}
+	for (int dem = 1; dem < 6 && dong - dem >= 0; dem++)
+	{
+		if (_pArr[dong - dem][cot].getCheck() == -1)
+			SoQuanTa++;
+		else if (_pArr[dong - dem][cot].getCheck() == 1)
+		{
+			SoQuanDich++;
+			break;
+		}
+		else break;
+	}
+	if (SoQuanDich == 2 && SoQuanTa < 4) return 0;
+	DiemTong -= MangDiemPhongNgu[SoQuanDich + 1];
+	DiemTong += MangDiemTanCong[SoQuanTa];
+	return DiemTong;
+}
+int _Board::DiemTanCongNgang_DaDanh(int dong, int cot)
+{
+	int DiemTong = 0;
+	int SoQuanTa = 0;
+	int SoQuanDich = 0;
+	for (int dem = 1; dem < 6 && cot + dem < _size; dem++)
+	{
+		if (_pArr[dong][cot + dem].getCheck() == -1)
+			SoQuanTa++;
+		else if (_pArr[dong][cot + dem].getCheck() == 1)
+		{
+			SoQuanDich++;
+			break;
+		}
+		else break;
+	}
+	for (int dem = 1; dem < 6 && cot - dem >= 0; dem++)
+	{
+		if (_pArr[dong][cot - dem].getCheck() == -1)
+			SoQuanTa++;
+		else if (_pArr[dong][cot - dem].getCheck() == 1)
+		{
+			SoQuanDich++;
+			break;
+		}
+		else break;
+	}
+	if (SoQuanDich == 2 && SoQuanTa < 4) return 0;
+	DiemTong -= MangDiemPhongNgu[SoQuanDich + 1];
+	DiemTong += MangDiemTanCong[SoQuanTa];
+	return DiemTong;
+}
+int _Board::DiemTanCongCheoXuong_DaDanh(int dong, int cot)
+{
+	int DiemTong = 0;
+	int SoQuanTa = 0;
+	int SoQuanDich = 0;
+	for (int dem = 1; dem < 6 && dong + dem < _size && cot + dem < _size; dem++)
+	{
+		if (_pArr[dong + dem][cot + dem].getCheck() == -1)
+			SoQuanTa++;
+		else if (_pArr[dong + dem][cot + dem].getCheck() == 1)
+		{
+			SoQuanDich++;
+			break;
+		}
+		else break;
+	}
+	for (int dem = 1; dem < 6 && dong - dem >= 0 && cot - dem >= 0; dem++)
+	{
+		if (_pArr[dong - dem][cot - dem].getCheck() == -1)
+			SoQuanTa++;
+		else if (_pArr[dong - dem][cot - dem].getCheck() == 1)
+		{
+			SoQuanDich++;
+			break;
+		}
+		else break;
+	}
+	if (SoQuanDich == 2 && SoQuanTa < 4) return 0;
+	DiemTong -= MangDiemPhongNgu[SoQuanDich + 1];
+	DiemTong += MangDiemTanCong[SoQuanTa];
+	return DiemTong;
+}
+int _Board::DiemTanCongCheoLen_DaDanh(int dong, int cot)
+{
+	int DiemTong = 0;
+	int SoQuanTa = 0;
+	int SoQuanDich = 0;
+	for (int dem = 1; dem < 6 && dong - dem >= 0 && cot + dem < _size; dem++)
+	{
+		if (_pArr[dong - dem][cot + dem].getCheck() == -1)
+			SoQuanTa++;
+		else if (_pArr[dong - dem][cot + dem].getCheck() == 1)
+		{
+			SoQuanDich++;
+			break;
+		}
+		else break;
+	}
+	for (int dem = 1; dem < 6 && dong + dem < _size && cot - dem >= 0; dem++)
+	{
+		if (_pArr[dong + dem][cot - dem].getCheck() == -1)
+			SoQuanTa++;
+		else if (_pArr[dong + dem][cot - dem].getCheck() == 1)
+		{
+			SoQuanDich++;
+			break;
+		}
+		else break;
+	}
+	if (SoQuanDich == 2 && SoQuanTa < 4) return 0;
+	DiemTong -= MangDiemPhongNgu[SoQuanDich + 1];
+	DiemTong += MangDiemTanCong[SoQuanTa];
+	return DiemTong;
+}
+// phong ngu
+int _Board::DiemPhongNguDoc_DaDanh(int dong, int cot)
+{
+	int DiemTong = 0;
+	int SoQuanTa = 0;
+	int SoQuanDich = 0;
+	for (int dem = 1; dem < 6 && dong + dem < _size; dem++)
+	{
+		if (_pArr[dong + dem][cot].getCheck() == -1)
+		{
+			SoQuanTa++;
+			break;
+		}
+		else if (_pArr[dong + dem][cot].getCheck() == 1)
+		{
+			SoQuanDich++;
+		}
+		else break;
+	}
+	for (int dem = 1; dem < 6 && dong - dem >= 0; dem++)
+	{
+		if (_pArr[dong - dem][cot].getCheck() == -1)
+		{
+			SoQuanTa++;
+			break;
+		}
+		else if (_pArr[dong - dem][cot].getCheck() == 1)
+		{
+			SoQuanDich++;
+		}
+		else break;
+	}
+	if (SoQuanTa == 2 && SoQuanDich < 4) return 0;
+	if (SoQuanDich == 4) return MangDiemPhongNgu[6];
+	DiemTong += MangDiemPhongNgu[SoQuanDich - SoQuanTa];
+	return DiemTong;
+}
+int _Board::DiemPhongNguNgang_DaDanh(int dong, int cot)
+{
+	int DiemTong = 0;
+	int SoQuanTa = 0;
+	int SoQuanDich = 0;
+	for (int dem = 1; dem < 6 && cot + dem < _size; dem++)
+	{
+		if (_pArr[dong][cot + dem].getCheck() == -1)
+		{
+			SoQuanTa++;
+			break;
+		}
+		else if (_pArr[dong][cot + dem].getCheck() == 1)
+		{
+			SoQuanDich++;
+		}
+		else break;
+	}
+	for (int dem = 1; dem < 6 && cot - dem >= 0; dem++)
+	{
+		if (_pArr[dong][cot - dem].getCheck() == -1)
+		{
+			SoQuanTa++;
+			break;
+		}
+		else if (_pArr[dong][cot - dem].getCheck() == 1)
+		{
+			SoQuanDich++;
+		}
+		else break;
+	}
+	if (SoQuanTa == 2 && SoQuanDich < 4) return 0;
+	if (SoQuanDich == 4) return MangDiemPhongNgu[6];
+	DiemTong += MangDiemPhongNgu[SoQuanDich - SoQuanTa];
+	return DiemTong;
+}
+int _Board::DiemPhongNguCheoXuong_DaDanh(int dong, int cot)
+{
+	int DiemTong = 0;
+	int SoQuanTa = 0;
+	int SoQuanDich = 0;
+	for (int dem = 1; dem < 6 && dong + dem < _size && cot + dem < _size; dem++)
+	{
+		if (_pArr[dong + dem][cot + dem].getCheck() == -1)
+		{
+			SoQuanTa++;
+			break;
+		}
+		else if (_pArr[dong + dem][cot + dem].getCheck() == 1)
+		{
+			SoQuanDich++;
+		}
+		else break;
+	}
+	for (int dem = 1; dem < 6 && dong - dem >= 0 && cot - dem >= 0; dem++)
+	{
+		if (_pArr[dong - dem][cot - dem].getCheck() == -1)
+		{
+			SoQuanTa++;
+			break;
+		}
+		else if (_pArr[dong - dem][cot - dem].getCheck() == 1)
+		{
+			SoQuanDich++;
+		}
+		else break;
+	}
+	if (SoQuanTa == 2 && SoQuanDich < 4) return 0;
+	if (SoQuanDich == 4) return MangDiemPhongNgu[6];
+	DiemTong += MangDiemPhongNgu[SoQuanDich - SoQuanTa];
+	return DiemTong;
+}
+int _Board::DiemPhongNguCheoLen_DaDanh(int dong, int cot)
+{
+	int DiemTong = 0;
+	int SoQuanTa = 0;
+	int SoQuanDich = 0;
+	for (int dem = 1; dem < 6 && dong - dem >= 0 && cot + dem < _size; dem++)
+	{
+		if (_pArr[dong - dem][cot + dem].getCheck() == -1)
+		{
+			SoQuanTa++;
+			break;
+		}
+		else if (_pArr[dong - dem][cot + dem].getCheck() == 1)
+		{
+			SoQuanDich++;
+		}
+		else break;
+	}
+	for (int dem = 1; dem < 6 && dong + dem < _size && cot - dem >= 0; dem++)
+	{
+		if (_pArr[dong + dem][cot - dem].getCheck() == -1)
+		{
+			SoQuanTa++;
+			break;
+		}
+		else if (_pArr[dong + dem][cot - dem].getCheck() == 1)
+		{
+			SoQuanDich++;
+		}
+		else break;
+	}
+	if (SoQuanTa == 2 && SoQuanDich < 4) return 0;
+	if (SoQuanDich == 4) return MangDiemPhongNgu[6];
+	DiemTong += MangDiemPhongNgu[SoQuanDich - SoQuanTa];
+	return DiemTong;
+}
