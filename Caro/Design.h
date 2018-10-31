@@ -4,6 +4,7 @@
 #include "_Common.h"
 #include <string>
 #include <fstream>
+#pragma comment (lib, "winmm.lib") 
 class Design
 {
 public:
@@ -21,6 +22,7 @@ public:
 	static void ThongTin2NguoiChoi();
 	static void Winword(int ,int);
 	static void Loseword(int, int);
+	static void PhaoHoa(int, int);
 };
 
 

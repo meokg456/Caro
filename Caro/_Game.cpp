@@ -17,9 +17,22 @@ char _Game::waitKeyBoard() {
 	return _command;
 }
 char _Game::askContinue() {
-	_Common::gotoXY(0, _b->getYAt(_b->getSize() - 1, _b->getSize() - 1) + 3);// Đưa con trỏ ra khỏi bàn cờ để không cho người chơi 
-																			// tiếp tục đánh 
-	cout << "Ban co muon choi lai khong? (y/n)" << endl;
+	_Common::gotoXY(0, _b->getYAt(_b->getSize() - 1, _b->getSize() - 1) + 3);// Đưa con trỏ ra khỏi bàn cờ để không cho người chơi  tiếp tục đánh														   
+	int x = 63;
+	int y = 20;
+	Design::SetColor(180);
+	for (int i = 0; i < 12; i++) {
+		_Common::gotoXY(x, y);
+		cout << "                                     ";
+		y++;
+	}
+	y = 20;
+	_Common::gotoXY(x+4, y+3);
+	cout << "Ban co muon choi lai khong? ";
+	_Common::gotoXY(x+7, y+6);
+	cout << "YES";
+	_Common::gotoXY(x+25, y+6);
+	cout << "NO";
 	return waitKeyBoard();
 }
 void _Game::startGame() {
@@ -41,12 +54,12 @@ bool _Game::processCheckBoard()
 	switch (_b->checkBoard(_x, _y, _turn))
 	{
 	case -1:
-		Design::SetColor(12);//Tạo màu đỏ
+		Design::SetColor(244);//Tạo màu đỏ
 		printf("X");
 		Design::SetColor(15);//Trả lại màu trắng cho console
 		break;
 	case 1:
-		Design::SetColor(11);//Tạo màu xanh duong nhat
+		Design::SetColor(242);//Tạo màu xanh lá cây
 		printf("O");
 		Design::SetColor(15);//Trả lại màu trắng cho console
 		break;
@@ -68,8 +81,13 @@ int _Game::processFinish()
 	case -1:
 		//Người chơi 1 thắng , người chơi 2 thua
 		//vẽ hiệu ứng thắng thua
-		Design::Winword(34, 5);
 		Design::Loseword(83, 5);
+		Design::Winword(34, 5);
+		//Hiệu ứng pháo hoa
+		PlaySound("Faded2.wav", NULL, SND_ASYNC);
+		Design::PhaoHoa(40, 10);
+		PlaySound(NULL, NULL,NULL);
+
 		_Common::gotoXY(0, _b->getYAt(_b->getSize() - 1, _b->getSize() - 1) + 2);
 		break;
 	case 1:
@@ -77,8 +95,11 @@ int _Game::processFinish()
 		//vẽ hiệu ứng thắng thua
 		Design::Loseword(34, 5);
 		Design::Winword(82, 5);
+		//Hiệu ứng pháo hoa
+		PlaySound("Faded2.wav", NULL, SND_ASYNC);
+		Design::PhaoHoa(83, 5);
+		PlaySound(NULL, NULL, NULL);
 		_Common::gotoXY(0, _b->getYAt(_b->getSize() - 1, _b->getSize() - 1) + 2);
-
 		break;
 
 	case 0:

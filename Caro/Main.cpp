@@ -30,6 +30,7 @@ void main() {
 	{
 	case 1:
 	{
+		system("cls");
 		/*Design::LoadingWord();*/
 		Design::ThongTin2NguoiChoi();
 		Design::SetColor(15);//Trả lại nền đen màu trắng
@@ -48,6 +49,7 @@ void main() {
 	}
 	}
 
+	
 	while (g.isContinue()) {
 
 		g.waitKeyBoard();
