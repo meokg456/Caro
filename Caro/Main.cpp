@@ -20,7 +20,8 @@ void main() {
 	/*Design::GamOverWord(55, 25);
 	_getch();*/
 	
-	Design::CaroWord(LEFT_caro,TOP_caro);	int i = Design::RunMenu(LEFT_menu,TOP_menu,SIZE_menu); 
+	Design::CaroWord(LEFT_caro,TOP_caro);	
+	int i = Design::RunMenu(LEFT_menu, TOP_menu, SIZE_menu);
 	_getch();
 
 	_Game g(BOARD_SIZE, LEFT, TOP);
@@ -29,9 +30,11 @@ void main() {
 	{
 	case 1:
 	{
+		system("cls");
 		/*Design::LoadingWord();*/
-		g.startGame();
 		Design::ThongTin2NguoiChoi();
+		Design::SetColor(15);//Trả lại nền đen màu trắng
+		g.startGame();
 		break;
 	}
 	case 2:
@@ -46,6 +49,7 @@ void main() {
 	}
 	}
 
+	
 	while (g.isContinue()) {
 
 		g.waitKeyBoard();
@@ -75,14 +79,15 @@ void main() {
 
 				break;
 			case 27:
+				g.SaveGame();
 				g.exitGame();
 				break;
-			case 'L':
+			/*case 'L'://để thế này thì không thể gọi được khi đang chơi dở
 				g.SaveGame();
 				break;
 			case'T':
 				g.LoadGame();
-				break;
+				break;*/
 			case 13:
 
 				//Đánh dấu bàn cờ, sau đó kiểm tra và xử lý thắng/thua/hòa/tiếp tục
@@ -94,6 +99,7 @@ void main() {
 					if (g.askContinue() == 'Y')  g.startGame();
 					else {
 						g.exitGame();
+						g.SaveGame();
 					}
 					
 

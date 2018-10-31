@@ -340,7 +340,8 @@ void Design::Winword(int x,int y)
 	for (int i = 0; i <48; i++)
 	{
 		_Common::gotoXY(x + 1, temp);
-		cout << "                                            ";
+		cout << "                                                 ";
+		Sleep(15);
 		temp++;
 	}
 	x = x + 15;
@@ -364,7 +365,8 @@ void Design::Winword(int x,int y)
 		cout << s[i];
 		y++;
 	}
-	
+
+	Design::SetColor(15);//Trả lại font thường cho console
 }
 
 void Design::Loseword(int x, int y)
@@ -374,7 +376,8 @@ void Design::Loseword(int x, int y)
 	for (int i = 0; i < 48; i++)
 	{
 		_Common::gotoXY(x + 1, temp);
-		cout << "                                            ";
+		cout << "                                                ";
+		Sleep(15);
 		temp++;
 	}
 	x = x + 15;
@@ -397,4 +400,139 @@ void Design::Loseword(int x, int y)
 		cout << s[i];
 		y++;
 	}
+	Design::SetColor(15);//Trả lại font thường cho console
 }
+
+void Design::PhaoHoa(int x, int y)
+{  
+	string s1[5];
+	int i = 0;
+	ifstream filein("PhaoHoa1.txt", ios::in);
+	if (filein) {
+		while (!filein.eof()) {
+			getline(filein, s1[i]);
+			s1[i] = s1[i] + "\n";
+			i++;
+		}
+	}
+	filein.close();
+	string s2[7];
+	i = 0;
+	ifstream filein1("PhaoHoa2.txt", ios::in);
+	if (filein1) {
+		while (!filein1.eof()) {
+			getline(filein1, s2[i]);
+			s2[i] = s2[i] + "\n";
+			i++;
+		}
+	}
+	filein1.close();
+	string s3[12];
+	i = 0;
+	ifstream filein2("PhaoHoa3.txt", ios::in);
+	if (filein2) {
+		while (!filein2.eof()) {
+			getline(filein2, s3[i]);
+			s3[i] = s3[i] + "\n";
+			i++;
+		}
+	}
+	filein2.close();
+	string s4[13];
+	i = 0;
+	ifstream filein3("PhaoHoa4.txt", ios::in);
+	if (filein3) {
+		while (!filein3.eof()) {
+			getline(filein3, s4[i]);
+			s4[i] = s4[i] + "\n";
+			i++;
+		}
+	}
+	filein3.close();
+	int m, n, m1, n1;
+	int temp;
+	int mau[10] = { 66,67,69,70,71,73,74,75,78,79 };
+	int k = 0;
+	while (k!=10)
+	{
+		m = rand() % 15 + x;
+	    n = rand() % 30 + y;
+		m1 = rand() % 15 + x;
+		n1 = rand() % 30 + y;
+		//Tạo một pháo hoa
+		Design::SetColor(mau[rand() % 10]);
+		//
+		temp = n;
+		for (int j = 0; j < 5; j++) {
+			_Common::gotoXY(m + 8, temp + 5);
+			cout << s1[j];
+			temp++;
+		}
+		temp = n1;
+		for (int j = 0; j < 5; j++) {
+			_Common::gotoXY(m1 + 8, temp + 5);
+			cout << s1[j];
+			temp++;
+		}
+		Sleep(400);
+		//
+		temp = n;
+		for (int j = 0; j < 7; j++) {
+			_Common::gotoXY(m + 5, temp + 3);
+			cout << s2[j];
+			temp++;
+		}
+		temp = n1;
+		for (int j = 0; j < 7; j++) {
+			_Common::gotoXY(m1 + 5, temp + 3);
+			cout << s2[j];
+			temp++;
+		}
+		Sleep(400);
+		//
+		temp = n;
+		for (int j = 0; j < 12; j++) {
+			_Common::gotoXY(m + 1, temp + 1);
+			cout << s3[j];
+			temp++;
+		}
+		temp = n1;
+		for (int j = 0; j < 12; j++) {
+			_Common::gotoXY(m1 + 1, temp + 1);
+			cout << s3[j];
+			temp++;
+		}
+		Sleep(350);
+		//
+		temp = n;
+		for (int j = 0; j < 13; j++) {
+			_Common::gotoXY(m - 1, temp);
+			cout << s4[j];
+			temp++;
+		}
+		temp = n1;
+		for (int j = 0; j < 13; j++) {
+			_Common::gotoXY(m1 - 1, temp);
+			cout << s4[j];
+			temp++;
+		}
+		//
+		SetColor(68);
+		temp = n;
+		for (int j = 0; j < 13; j++) {
+			_Common::gotoXY(m - 1, temp);
+			cout << "                              ";
+			temp++;
+		}
+		temp = n1;
+		for (int j = 0; j < 13; j++) {
+			_Common::gotoXY(m1 - 1, temp);
+			cout << "                              ";
+			temp++;
+		}
+		Sleep(300);
+		k++;
+	}
+	SetColor(15);//Trả lại font thường cho console
+}
+

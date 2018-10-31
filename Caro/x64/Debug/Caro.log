@@ -1,4 +1,0 @@
-﻿  _Game.cpp
-c:\users\quang hai\documents\github\caro\caro\_game.cpp(206): warning C4101: 'y': unreferenced local variable
-c:\users\quang hai\documents\github\caro\caro\_game.cpp(206): warning C4101: 'x': unreferenced local variable
-  Caro.vcxproj -> C:\Users\Quang Hai\Documents\GitHub\Caro\x64\Debug\Caro.exe
