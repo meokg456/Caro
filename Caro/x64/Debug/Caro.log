@@ -1,0 +1,8 @@
+﻿  Main.cpp
+c:\users\dell\desktop\caro\caro\main.cpp(5): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  _Board.cpp
+  _Common.cpp
+  _Game.cpp
+  _Point.cpp
+  Generating Code...
+  Caro.vcxproj -> C:\Users\DELL\Desktop\Caro\x64\Debug\Caro.exe
