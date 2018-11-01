@@ -71,14 +71,12 @@ bool _Game::processCheckBoard()
 		Design::SetColor(244);//Tạo màu đỏ
 		printf("X");
 		DemX++;
-		cout << DemX;
 		Design::SetColor(15);//Trả lại màu trắng cho console
 		break;
 	case 1:
 		Design::SetColor(242);//Tạo màu xanh lá cây
 		printf("O");
 		DemO++;
-		cout << DemO;
 		Design::SetColor(15);//Trả lại màu trắng cho console
 		break;
 	case 0: return false; // Khi đánh vào ô đã đánh rồi
@@ -355,7 +353,7 @@ void _Game::AI(int mode)
 			while (!kt)
 			{
 				int i = rand() % 24, j = rand() % 24;
-				_x = 47 + i * 4;
+				_x = 37 + i * 4;
 				_y = 6 + j * 2;
 				_Common::gotoXY(_x, _y);
 				if (processCheckBoard()) {
@@ -370,7 +368,7 @@ void _Game::AI(int mode)
 	}
 	else
 	{
-		_x = 47 + 24 / 2 * 4;
+		_x = 37 + 24 / 2 * 4;
 		_y = 6 + 24 / 2 * 2;
 		_Common::gotoXY(_x, _y);
 		if (processCheckBoard()) {
@@ -430,7 +428,7 @@ void _Game::AI(int mode)
 							if (askContinue() == 'Y')
 							{
 								resetGame();
-								_x = 47 + 24 / 2 * 4;
+								_x = 37 + 24 / 2 * 4;
 								_y = 6 + 24 / 2 * 2;
 								_Common::gotoXY(_x, _y);
 								if (processCheckBoard()) {
@@ -456,7 +454,7 @@ void _Game::AI(int mode)
 			{
 
 				Move move = _b->Heuristic();
-				_x = 47 + move.x * 4;
+				_x = 37 + move.x * 4;
 				_y = 6 + move.y * 2;
 				_Common::gotoXY(_x, _y);
 				if (processCheckBoard())
@@ -467,10 +465,10 @@ void _Game::AI(int mode)
 					{
 						_Common::gotoXY(0, _b->getYAt(_b->getSize() - 1, _b->getSize() - 1) + 2);
 						cout << "Nguoi choi thang!";
-						if (askContinue() == 'Y') 
+						if (askContinue() == 'Y')
 						{
 							resetGame();
-							_x = 47 + 24 / 2 * 4;
+							_x = 37 + 24 / 2 * 4;
 							_y = 6 + 24 / 2 * 2;
 							_Common::gotoXY(_x, _y);
 							if (processCheckBoard()) {
@@ -479,7 +477,7 @@ void _Game::AI(int mode)
 								}
 							}
 							kt = 1;
-				
+
 						}
 						else {
 							exitGame();
@@ -491,10 +489,10 @@ void _Game::AI(int mode)
 					{
 						_Common::gotoXY(0, _b->getYAt(_b->getSize() - 1, _b->getSize() - 1) + 2);
 						cout << "May thang!";
-						if (askContinue() == 'Y')  
+						if (askContinue() == 'Y')
 						{
 							resetGame();
-							_x = 47 + 24 / 2 * 4;
+							_x = 37 + 24 / 2 * 4;
 							_y = 6 + 24 / 2 * 2;
 							_Common::gotoXY(_x, _y);
 							if (processCheckBoard()) {
@@ -503,7 +501,7 @@ void _Game::AI(int mode)
 								}
 							}
 							kt = 1;
-					
+
 						}
 						else {
 							exitGame();
@@ -517,7 +515,7 @@ void _Game::AI(int mode)
 						cout << "Hoa!";
 						if (askContinue() == 'Y') {
 							resetGame();
-							_x = 47 + 24 / 2 * 4;
+							_x = 37 + 24 / 2 * 4;
 							_y = 6 + 24 / 2 * 2;
 							_Common::gotoXY(_x, _y);
 							if (processCheckBoard()) {
@@ -544,11 +542,6 @@ void _Game::AI(int mode)
 
 				}
 
-			case -1: case 1: case 0:;
-				if (askContinue() == 'Y') {
-					_loop = true;
-					startGame();
-				}
 			}
 		}
 	}

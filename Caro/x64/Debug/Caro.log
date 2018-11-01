@@ -1,1 +1,4 @@
-﻿  Caro.vcxproj -> C:\Users\DELL\Desktop\Caro\x64\Debug\Caro.exe
+﻿  _Game.cpp
+c:\users\dung\documents\github\caro\caro\_game.cpp(127): warning C4101: 'y': unreferenced local variable
+c:\users\dung\documents\github\caro\caro\_game.cpp(127): warning C4101: 'x': unreferenced local variable
+  Caro.vcxproj -> C:\Users\Dung\Documents\GitHub\Caro\x64\Debug\Caro.exe
