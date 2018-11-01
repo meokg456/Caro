@@ -15,17 +15,17 @@ void main() {
 		cout << "\n=> MAU: " << i;
 	}
 	_getch();*/
-	
+
 	_Common::fixConsoleWindow();
 
 	/*Design::GamOverWord(55, 25);
 	_getch();*/
-	
-	Design::CaroWord(LEFT_caro,TOP_caro);	
+
+	Design::CaroWord(LEFT_caro, TOP_caro);
 	int i = Design::RunMenu(LEFT_menu, TOP_menu, SIZE_menu);
 
 	//Design::LoadingWord();
-	Design::CaroWord(LEFT_caro, TOP_caro);	int i = Design::RunMenu(LEFT_menu, TOP_menu, SIZE_menu);
+	Design::CaroWord(LEFT_caro, TOP_caro);
 
 	_getch();
 
@@ -60,89 +60,74 @@ void main() {
 	}
 	}
 
-	
+
 	while (g.isContinue()) {
-			if (AI == true)
-			{
-				g.AI(1);
-			}
-			else
-			{
-				g.waitKeyBoard();
-				switch (g.getCommand()) {
+		if (AI == true)
+		{
+			g.AI(1);
+		}
+		else
+		{
+			g.waitKeyBoard();
+			switch (g.getCommand()) {
 
-				case 'A':
+			case 'A':
 
-					g.moveLeft();
+				g.moveLeft();
 
-					break;
+				break;
 
-				case 'W':
+			case 'W':
 
-					g.moveUp();
+				g.moveUp();
 
-					break;
+				break;
 
-				case 'S':
+			case 'S':
 
-					g.moveDown();
+				g.moveDown();
 
-					break;
+				break;
 
-				case 'D':
+			case 'D':
 
-					g.moveRight();
+				g.moveRight();
 
-					break;
-				case 27:
-					g.exitGame();
-					break;
-				case 'L':
-					g.SaveGame();
-					break;
-				case'T':
-					g.LoadGame();
-					break;
-				case 13:
-
+				break;
+			case 'L':
+				g.SaveGame();
+				break;
+			case'T':
+				g.LoadGame();
 				break;
 			case 27:
 				g.SaveGame();
 				g.exitGame();
 				break;
-			/*case 'L'://để thế này thì không thể gọi được khi đang chơi dở
-				g.SaveGame();
-				break;
-			case'T':
-				g.LoadGame();
-				break;*/
+				/*case 'L'://để thế này thì không thể gọi được khi đang chơi dở
+					g.SaveGame();
+					break;
+				case'T':
+					g.LoadGame();
+					break;*/
 			case 13:
 
 				//Đánh dấu bàn cờ, sau đó kiểm tra và xử lý thắng/thua/hòa/tiếp tục
 				if (g.processCheckBoard()) {
-					//Đánh dấu bàn cờ, sau đó kiểm tra và xử lý thắng/thua/hòa/tiếp tục
 
-					if (g.processCheckBoard()) {
+					switch (g.processFinish()) {
 
-						switch (g.processFinish()) {
-
-						case -1: case 1: case 0:;
-							if (g.askContinue() == 'Y')  g.resetGame();
-							else {
-								g.exitGame();
-							}
-
-
+					case -1: case 1: case 0:
+						if (g.askContinue() == 'Y')  g.resetGame();
+						else {
+							g.exitGame();
+							g.SaveGame();
 						}
 
-					case -1: case 1: case 0:;
-					if (g.askContinue() == 'Y')  g.startGame();
-					else {
-						g.exitGame();
-						g.SaveGame();
-					}
 
+					}
 				}
 			}
+		}
 	}
 }
