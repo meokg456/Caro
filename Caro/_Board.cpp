@@ -48,6 +48,15 @@ void _Board::resetData() {
 }
 void _Board::drawBoard() {
 	if (_pArr == NULL) return; // phải gọi constructor trước
+
+	//Tô màu nền cho bàn cờ
+	Design::SetColor(243);
+	for (int i = 0; i <= _size-1; i++) {
+		_Common::gotoXY(_left + 4*0 , _top + 2 * i);
+		cout << "                                                                                                 ";
+		_Common::gotoXY(_left + 4*0, _top + 2 * i+1);
+		cout << "                                                                                                 ";
+	}
 	Design::SetColor(8);//Tạo màu cho bàn cờ
 	for (int i = 0; i <= _size-1; i++) {// vẽ theo i là vẽ từ trái sang
 		for (int j = 0; j <= _size-1; j++) {// vẽ theo j là vẽ dọc từ trên xuống(vẽ trước)
@@ -73,7 +82,6 @@ void _Board::drawBoard() {
 		cout << char(219);
 		_Common::gotoXY(_left + 4 * 0, _top + 2 * j + 1);
 		cout << char(219);
-
 		// Tô viền phải
 		_Common::gotoXY(_left + 4 * (_size), _top + 2 * j);
 		cout << char(219);
