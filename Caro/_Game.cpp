@@ -41,6 +41,9 @@ void _Game::resetGame()
 	_command = -1; // Gán lượt và phím mặc định
 	_x = _b->getXAt(0, 0);
 	_y = _b->getYAt(0, 0);
+	DemX = 0;
+	DemO = 0;
+
 }
 void _Game::exitGame() {
 	system("cls");
@@ -55,11 +58,15 @@ bool _Game::processCheckBoard()
 	case -1:
 		Design::SetColor(12);//Tạo màu đỏ
 		printf("X");
+		DemX++;
+		cout << DemX;
 		Design::SetColor(15);//Trả lại màu trắng cho console
 		break;
 	case 1:
 		Design::SetColor(11);//Tạo màu xanh duong nhat
 		printf("O");
+		DemO++;
+		cout << DemO;
 		Design::SetColor(15);//Trả lại màu trắng cho console
 		break;
 	case 0: return false; // Khi đánh vào ô đã đánh rồi
@@ -84,6 +91,8 @@ void _Game::SaveGame()
 		f << _y << endl;
 		f << _turn << endl;
 		f << _loop << endl;
+		f << DemX<<endl;
+		f << DemO << endl;
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
 				f << _b->_pArr[i][j].getCheck() << "   " << _b->_pArr[i][j].getX() << "    " << _b->_pArr[i][j].getY() << "             ";
@@ -111,6 +120,8 @@ void _Game::LoadGame()
 		f >> _y;
 		f >> _turn;
 		f >> _loop;
+		f >> DemX;
+		f >> DemO;
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
 				int check, x1, y1;

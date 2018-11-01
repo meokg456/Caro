@@ -93,7 +93,7 @@ void main() {
 						switch (g.processFinish()) {
 
 						case -1: case 1: case 0:;
-							if (g.askContinue() == 'Y')  g.startGame();
+							if (g.askContinue() == 'Y')  g.resetGame();
 							else {
 								g.exitGame();
 							}

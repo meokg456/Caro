@@ -15,6 +15,7 @@ class _Game {
 	int _command; // phím gõ từ người dùng
 
 	bool _loop; // Biến quyết định thoát game hay không
+	int DemX, DemO;
 
 public:
 	int getCommand();

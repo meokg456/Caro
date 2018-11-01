@@ -109,7 +109,6 @@ void _Board::drawBoard() {
 }
 int _Board::checkBoard(int pX, int pY, bool pTurn)// pX: hoành độ quân cờ; pY: tung độ quân cờ; pTurn: Trang thái lượt đánh của 2 người
 {
-
 	for (int i = 0; i < _size; i++) {
 
 		for (int j = 0; j < _size; j++) {
@@ -301,6 +300,8 @@ bool _Board::isFullBoard()
 		}
 	return true;
 }
+
+// Tham khảo 
 int MangDiemTanCong[] = { 0, 3, 24, 162, 1536 , 12288, 98304 };
 int MangDiemPhongNgu[] = { 0, 1, 9, 90, 729, 6561, 59049 };
 
