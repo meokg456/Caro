@@ -1,0 +1,13 @@
+﻿  Design.cpp
+  Main.cpp
+c:\users\dung\documents\github\caro\caro\main.cpp(11): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  _Board.cpp
+  _Common.cpp
+  _Game.cpp
+c:\users\dung\documents\github\caro\caro\_game.cpp(108): warning C4101: 'y': unreferenced local variable
+c:\users\dung\documents\github\caro\caro\_game.cpp(108): warning C4101: 'x': unreferenced local variable
+  _Point.cpp
+  Generating code
+  All 234 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Caro.vcxproj -> C:\Users\Dung\Documents\GitHub\Caro\x64\Release\Caro.exe
